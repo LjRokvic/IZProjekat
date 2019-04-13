@@ -18,5 +18,13 @@ http://www.symcat.com/conditions/eustachian-tube-dysfunction-ear-disorder
 http://www.symcat.com/conditions/open-wound-of-the-ear
 http://www.symcat.com/conditions/ear-drum-damage
 http://www.symcat.com/conditions/otitis-media
-http://www.symcat.com/symptoms/nasal-congestion
 http://www.symcat.com/conditions/deviated-nasal-septum
+http://www.symcat.com/conditions/allergy
+http://www.symcat.com/conditions/seasonal-allergies-hay-fever
+http://www.symcat.com/conditions/fracture-of-the-facial-bones
+
+
+
+
+
+
