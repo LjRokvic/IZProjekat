@@ -23,11 +23,14 @@ with open("source.txt", "r") as in_file:
         sym_lis = sym_div.find_all('li')
 
         symptoms = []
+        symptomPercents = []
 
         for sym_li in sym_lis:
             symptom = sym_li.find('span', attrs={'itemprop':'name'})
-            symptoms.append(symptom.string)
-            global_symptoms.add(symptom.string)
+            symPercent = sym_li.find('span', attrs={'suffix':'%'})
+            symptoms.append(symptom.string.replace(' ', '_'))
+            symptomPercents.append(symPercent.string)
+            global_symptoms.add(symptom.string.replace(' ', '_'))
             #print('\t - ' + symptom.string)
 
         test_div = soup.find('div', id='proc_chart_div')
@@ -38,8 +41,8 @@ with open("source.txt", "r") as in_file:
 
         for test_tr in test_trs:
             test = test_tr.find('a')
-            tests.append(test.string)
-            global_tests.add(test.string)
+            tests.append(test.string.replace(' ', '_'))
+            global_tests.add(test.string.replace(' ', '_'))
             #print('\t + ' + test.string)
 
         treat_div = soup.find('div', id='med_chart_div')
@@ -50,8 +53,8 @@ with open("source.txt", "r") as in_file:
 
         for treat_trs in treat_trs:
             treat = treat_trs.find('a')
-            treatments.append(treat.string)
-            global_treatments.add(treat.string)
+            treatments.append(treat.string.replace(' ', '_'))
+            global_treatments.add(treat.string.replace(' ', '_'))
             #print('\t * ' + treat.string)
 
         
@@ -59,7 +62,7 @@ with open("source.txt", "r") as in_file:
         #for st in symptoms:
             #out_file.write('symptom(\"' + st + '\").\n')
 
-        out_file.write('condition(\"'+ title.string + '\", [')
+        out_file.write('condition(\"'+ title.string.replace(' ', '_') + '\", [')
 
         for st in symptoms[:-1]:
             out_file.write('\"'+ st +'\",')
@@ -68,17 +71,22 @@ with open("source.txt", "r") as in_file:
 
         out_file.write('\n')
 
+        for p in range(0, len(symptoms)-1):
+            out_file.write('symptom_relation(\"'+ title.string.replace(' ', '_') + '\", \"' + symptoms[p] + '\", "' + str(float(symptomPercents[p])/100) + '\").\n')
+
+        out_file.write('\n')
+
         #TESTS
         for st in tests:
             #out_file.write('test(\"' + st + '\").\n')
-            out_file.write('test_for_condition(\"' + title.string + '\", \"'+ st + '\").\n')
+            out_file.write('test_for_condition(\"' + title.string.replace(' ', '_') + '\", \"'+ st + '\").\n')
 
         out_file.write('\n')
 
         #TREATMENTS
         for st in treatments:
             #out_file.write('treatment(\"' + st + '\").\n')
-            out_file.write('treatment_for_condition(\"' + title.string + '\", \"'+ st + '\").\n')
+            out_file.write('treatment_for_condition(\"' + title.string.replace(' ', '_') + '\", \"'+ st + '\").\n')
             
         out_file.write('\n')
 
