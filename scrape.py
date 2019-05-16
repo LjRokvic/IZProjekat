@@ -71,7 +71,7 @@ with open("source.txt", "r") as in_file:
 
         out_file.write('\n')
 
-        for p in range(0, len(symptoms)-1):
+        for p in range(0, len(symptoms)):
             out_file.write('symptom_relation(\"'+ title.string.replace(' ', '_') + '\", \"' + symptoms[p] + '\", ' + str(float(symptomPercents[p])/100) + ').\n')
 
         out_file.write('\n')
@@ -90,7 +90,8 @@ with open("source.txt", "r") as in_file:
             
         out_file.write('\n')
 
-for st in global_symptoms:
+
+for st in sorted(global_symptoms):
     out_file.write('symptom(\"' + st + '\").\n')
 
 out_file.write('\n')
