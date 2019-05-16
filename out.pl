@@ -1,16 +1,16 @@
 condition("Panic_disorder", ["Anxiety_and_nervousness","Depression","Shortness_of_breath","Depressive_or_psychotic_symptoms","Sharp_chest_pain","Dizziness","Insomnia","Abnormal_involuntary_movements","Chest_tightness","Palpitations","Irregular_heartbeat","Breathing_fast"]).
 
-symptom_relation("Panic_disorder", "Anxiety_and_nervousness", "0.88").
-symptom_relation("Panic_disorder", "Depression", "0.55").
-symptom_relation("Panic_disorder", "Shortness_of_breath", "0.4").
-symptom_relation("Panic_disorder", "Depressive_or_psychotic_symptoms", "0.33").
-symptom_relation("Panic_disorder", "Sharp_chest_pain", "0.33").
-symptom_relation("Panic_disorder", "Dizziness", "0.24").
-symptom_relation("Panic_disorder", "Insomnia", "0.18").
-symptom_relation("Panic_disorder", "Abnormal_involuntary_movements", "0.16").
-symptom_relation("Panic_disorder", "Chest_tightness", "0.14").
-symptom_relation("Panic_disorder", "Palpitations", "0.13").
-symptom_relation("Panic_disorder", "Irregular_heartbeat", "0.11").
+symptom_relation("Panic_disorder", "Anxiety_and_nervousness", 0.88).
+symptom_relation("Panic_disorder", "Depression", 0.55).
+symptom_relation("Panic_disorder", "Shortness_of_breath", 0.4).
+symptom_relation("Panic_disorder", "Depressive_or_psychotic_symptoms", 0.33).
+symptom_relation("Panic_disorder", "Sharp_chest_pain", 0.33).
+symptom_relation("Panic_disorder", "Dizziness", 0.24).
+symptom_relation("Panic_disorder", "Insomnia", 0.18).
+symptom_relation("Panic_disorder", "Abnormal_involuntary_movements", 0.16).
+symptom_relation("Panic_disorder", "Chest_tightness", 0.14).
+symptom_relation("Panic_disorder", "Palpitations", 0.13).
+symptom_relation("Panic_disorder", "Irregular_heartbeat", 0.11).
 
 test_for_condition("Panic_disorder", "Psychotherapy").
 test_for_condition("Panic_disorder", "Mental_health_counseling").
@@ -36,17 +36,17 @@ treatment_for_condition("Panic_disorder", "Disulfiram_(Antabuse)").
 
 condition("Eating_disorder", ["Depression","Anxiety_and_nervousness","Depressive_or_psychotic_symptoms","Decreased_appetite","Abusing_alcohol","Excessive_appetite","Difficulty_eating","Weight_gain","Excessive_anger","Insomnia","Vomiting_blood","Acne_or_pimples"]).
 
-symptom_relation("Eating_disorder", "Depression", "0.63").
-symptom_relation("Eating_disorder", "Anxiety_and_nervousness", "0.51").
-symptom_relation("Eating_disorder", "Depressive_or_psychotic_symptoms", "0.43").
-symptom_relation("Eating_disorder", "Decreased_appetite", "0.41").
-symptom_relation("Eating_disorder", "Abusing_alcohol", "0.24").
-symptom_relation("Eating_disorder", "Excessive_appetite", "0.24").
-symptom_relation("Eating_disorder", "Difficulty_eating", "0.2").
-symptom_relation("Eating_disorder", "Weight_gain", "0.17").
-symptom_relation("Eating_disorder", "Excessive_anger", "0.13").
-symptom_relation("Eating_disorder", "Insomnia", "0.13").
-symptom_relation("Eating_disorder", "Vomiting_blood", "0.09").
+symptom_relation("Eating_disorder", "Depression", 0.63).
+symptom_relation("Eating_disorder", "Anxiety_and_nervousness", 0.51).
+symptom_relation("Eating_disorder", "Depressive_or_psychotic_symptoms", 0.43).
+symptom_relation("Eating_disorder", "Decreased_appetite", 0.41).
+symptom_relation("Eating_disorder", "Abusing_alcohol", 0.24).
+symptom_relation("Eating_disorder", "Excessive_appetite", 0.24).
+symptom_relation("Eating_disorder", "Difficulty_eating", 0.2).
+symptom_relation("Eating_disorder", "Weight_gain", 0.17).
+symptom_relation("Eating_disorder", "Excessive_anger", 0.13).
+symptom_relation("Eating_disorder", "Insomnia", 0.13).
+symptom_relation("Eating_disorder", "Vomiting_blood", 0.09).
 
 test_for_condition("Eating_disorder", "Psychotherapy").
 test_for_condition("Eating_disorder", "Mental_health_counseling").
@@ -71,17 +71,17 @@ treatment_for_condition("Eating_disorder", "Lisdexamfetamine_(Vyvanse)").
 
 condition("Attention_deficit_hyperactivity_disorder_(ADHD)", ["Depressive_or_psychotic_symptoms","Depression","Anxiety_and_nervousness","Hostile_behavior","Excessive_anger","Restlessness","Temper_problems","Drug_abuse","Obsessions_and_compulsions","Low_self-esteem","Lack_of_growth","Antisocial_behavior"]).
 
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Depressive_or_psychotic_symptoms", "0.53").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Depression", "0.34").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Anxiety_and_nervousness", "0.32").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Hostile_behavior", "0.17").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Excessive_anger", "0.17").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Restlessness", "0.15").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Temper_problems", "0.09").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Drug_abuse", "0.08").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Obsessions_and_compulsions", "0.08").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Low_self-esteem", "0.04").
-symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Lack_of_growth", "0.04").
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Depressive_or_psychotic_symptoms", 0.53).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Depression", 0.34).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Anxiety_and_nervousness", 0.32).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Hostile_behavior", 0.17).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Excessive_anger", 0.17).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Restlessness", 0.15).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Temper_problems", 0.09).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Drug_abuse", 0.08).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Obsessions_and_compulsions", 0.08).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Low_self-esteem", 0.04).
+symptom_relation("Attention_deficit_hyperactivity_disorder_(ADHD)", "Lack_of_growth", 0.04).
 
 test_for_condition("Attention_deficit_hyperactivity_disorder_(ADHD)", "Psychotherapy").
 test_for_condition("Attention_deficit_hyperactivity_disorder_(ADHD)", "Mental_health_counseling").
@@ -108,17 +108,17 @@ treatment_for_condition("Attention_deficit_hyperactivity_disorder_(ADHD)", "Cypr
 
 condition("Asperger_syndrome", ["Depressive_or_psychotic_symptoms","Anxiety_and_nervousness","Depression","Temper_problems","Lack_of_growth","Fainting","Antisocial_behavior","Delusions_or_hallucinations","Hostile_behavior","Excessive_anger","Obsessions_and_compulsions","Nightmares"]).
 
-symptom_relation("Asperger_syndrome", "Depressive_or_psychotic_symptoms", "0.6").
-symptom_relation("Asperger_syndrome", "Anxiety_and_nervousness", "0.53").
-symptom_relation("Asperger_syndrome", "Depression", "0.36").
-symptom_relation("Asperger_syndrome", "Temper_problems", "0.18").
-symptom_relation("Asperger_syndrome", "Lack_of_growth", "0.18").
-symptom_relation("Asperger_syndrome", "Fainting", "0.15").
-symptom_relation("Asperger_syndrome", "Antisocial_behavior", "0.12").
-symptom_relation("Asperger_syndrome", "Delusions_or_hallucinations", "0.08").
-symptom_relation("Asperger_syndrome", "Hostile_behavior", "0.08").
-symptom_relation("Asperger_syndrome", "Excessive_anger", "0.04").
-symptom_relation("Asperger_syndrome", "Obsessions_and_compulsions", "0.04").
+symptom_relation("Asperger_syndrome", "Depressive_or_psychotic_symptoms", 0.6).
+symptom_relation("Asperger_syndrome", "Anxiety_and_nervousness", 0.53).
+symptom_relation("Asperger_syndrome", "Depression", 0.36).
+symptom_relation("Asperger_syndrome", "Temper_problems", 0.18).
+symptom_relation("Asperger_syndrome", "Lack_of_growth", 0.18).
+symptom_relation("Asperger_syndrome", "Fainting", 0.15).
+symptom_relation("Asperger_syndrome", "Antisocial_behavior", 0.12).
+symptom_relation("Asperger_syndrome", "Delusions_or_hallucinations", 0.08).
+symptom_relation("Asperger_syndrome", "Hostile_behavior", 0.08).
+symptom_relation("Asperger_syndrome", "Excessive_anger", 0.04).
+symptom_relation("Asperger_syndrome", "Obsessions_and_compulsions", 0.04).
 
 test_for_condition("Asperger_syndrome", "Psychotherapy").
 test_for_condition("Asperger_syndrome", "Mental_health_counseling").
@@ -143,17 +143,17 @@ treatment_for_condition("Asperger_syndrome", "Amantadine").
 
 condition("Bipolar_disorder", ["Depressive_or_psychotic_symptoms","Depression","Anxiety_and_nervousness","Insomnia","Hostile_behavior","Delusions_or_hallucinations","Abusing_alcohol","Drug_abuse","Excessive_anger","Temper_problems","Fears_and_phobias","Obsessions_and_compulsions"]).
 
-symptom_relation("Bipolar_disorder", "Depressive_or_psychotic_symptoms", "0.64").
-symptom_relation("Bipolar_disorder", "Depression", "0.62").
-symptom_relation("Bipolar_disorder", "Anxiety_and_nervousness", "0.48").
-symptom_relation("Bipolar_disorder", "Insomnia", "0.21").
-symptom_relation("Bipolar_disorder", "Hostile_behavior", "0.21").
-symptom_relation("Bipolar_disorder", "Delusions_or_hallucinations", "0.2").
-symptom_relation("Bipolar_disorder", "Abusing_alcohol", "0.18").
-symptom_relation("Bipolar_disorder", "Drug_abuse", "0.18").
-symptom_relation("Bipolar_disorder", "Excessive_anger", "0.15").
-symptom_relation("Bipolar_disorder", "Temper_problems", "0.13").
-symptom_relation("Bipolar_disorder", "Fears_and_phobias", "0.07").
+symptom_relation("Bipolar_disorder", "Depressive_or_psychotic_symptoms", 0.64).
+symptom_relation("Bipolar_disorder", "Depression", 0.62).
+symptom_relation("Bipolar_disorder", "Anxiety_and_nervousness", 0.48).
+symptom_relation("Bipolar_disorder", "Insomnia", 0.21).
+symptom_relation("Bipolar_disorder", "Hostile_behavior", 0.21).
+symptom_relation("Bipolar_disorder", "Delusions_or_hallucinations", 0.2).
+symptom_relation("Bipolar_disorder", "Abusing_alcohol", 0.18).
+symptom_relation("Bipolar_disorder", "Drug_abuse", 0.18).
+symptom_relation("Bipolar_disorder", "Excessive_anger", 0.15).
+symptom_relation("Bipolar_disorder", "Temper_problems", 0.13).
+symptom_relation("Bipolar_disorder", "Fears_and_phobias", 0.07).
 
 test_for_condition("Bipolar_disorder", "Psychotherapy").
 test_for_condition("Bipolar_disorder", "Mental_health_counseling").
@@ -180,17 +180,17 @@ treatment_for_condition("Bipolar_disorder", "Haloperidol").
 
 condition("Obsessive_compulsive_disorder_(OCD)", ["Anxiety_and_nervousness","Depression","Depressive_or_psychotic_symptoms","Obsessions_and_compulsions","Temper_problems","Hostile_behavior","Low_self-esteem","Excessive_anger","Feeling_ill","Fears_and_phobias","Hysterical_behavior","Lack_of_growth"]).
 
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Anxiety_and_nervousness", "0.68").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Depression", "0.56").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Depressive_or_psychotic_symptoms", "0.47").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Obsessions_and_compulsions", "0.33").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Temper_problems", "0.14").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Hostile_behavior", "0.13").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Low_self-esteem", "0.12").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Excessive_anger", "0.1").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Feeling_ill", "0.1").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Fears_and_phobias", "0.1").
-symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Hysterical_behavior", "0.04").
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Anxiety_and_nervousness", 0.68).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Depression", 0.56).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Depressive_or_psychotic_symptoms", 0.47).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Obsessions_and_compulsions", 0.33).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Temper_problems", 0.14).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Hostile_behavior", 0.13).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Low_self-esteem", 0.12).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Excessive_anger", 0.1).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Feeling_ill", 0.1).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Fears_and_phobias", 0.1).
+symptom_relation("Obsessive_compulsive_disorder_(OCD)", "Hysterical_behavior", 0.04).
 
 test_for_condition("Obsessive_compulsive_disorder_(OCD)", "Psychotherapy").
 test_for_condition("Obsessive_compulsive_disorder_(OCD)", "Mental_health_counseling").
@@ -216,17 +216,17 @@ treatment_for_condition("Obsessive_compulsive_disorder_(OCD)", "Atomoxetine_(Str
 
 condition("Post-traumatic_stress_disorder_(PTSD)", ["Anxiety_and_nervousness","Depression","Depressive_or_psychotic_symptoms","Insomnia","Delusions_or_hallucinations","Drug_abuse","Excessive_anger","Temper_problems","Abusing_alcohol","Low_self-esteem","Hostile_behavior","Fears_and_phobias"]).
 
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Anxiety_and_nervousness", "0.7").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Depression", "0.66").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Depressive_or_psychotic_symptoms", "0.57").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Insomnia", "0.23").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Delusions_or_hallucinations", "0.19").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Drug_abuse", "0.16").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Excessive_anger", "0.14").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Temper_problems", "0.11").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Abusing_alcohol", "0.1").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Low_self-esteem", "0.09").
-symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Hostile_behavior", "0.09").
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Anxiety_and_nervousness", 0.7).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Depression", 0.66).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Depressive_or_psychotic_symptoms", 0.57).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Insomnia", 0.23).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Delusions_or_hallucinations", 0.19).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Drug_abuse", 0.16).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Excessive_anger", 0.14).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Temper_problems", 0.11).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Abusing_alcohol", 0.1).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Low_self-esteem", 0.09).
+symptom_relation("Post-traumatic_stress_disorder_(PTSD)", "Hostile_behavior", 0.09).
 
 test_for_condition("Post-traumatic_stress_disorder_(PTSD)", "Psychotherapy").
 test_for_condition("Post-traumatic_stress_disorder_(PTSD)", "Mental_health_counseling").
@@ -250,17 +250,17 @@ treatment_for_condition("Post-traumatic_stress_disorder_(PTSD)", "Oxcarbazepine_
 
 condition("Dysthymic_disorder", ["Depression","Anxiety_and_nervousness","Depressive_or_psychotic_symptoms","Insomnia","Excessive_anger","Low_self-esteem","Disturbance_of_memory","Temper_problems","Fears_and_phobias","Slurring_words","Loss_of_sex_drive","Antisocial_behavior"]).
 
-symptom_relation("Dysthymic_disorder", "Depression", "0.76").
-symptom_relation("Dysthymic_disorder", "Anxiety_and_nervousness", "0.72").
-symptom_relation("Dysthymic_disorder", "Depressive_or_psychotic_symptoms", "0.44").
-symptom_relation("Dysthymic_disorder", "Insomnia", "0.22").
-symptom_relation("Dysthymic_disorder", "Excessive_anger", "0.07").
-symptom_relation("Dysthymic_disorder", "Low_self-esteem", "0.07").
-symptom_relation("Dysthymic_disorder", "Disturbance_of_memory", "0.06").
-symptom_relation("Dysthymic_disorder", "Temper_problems", "0.04").
-symptom_relation("Dysthymic_disorder", "Fears_and_phobias", "0.04").
-symptom_relation("Dysthymic_disorder", "Slurring_words", "0.03").
-symptom_relation("Dysthymic_disorder", "Loss_of_sex_drive", "0.02").
+symptom_relation("Dysthymic_disorder", "Depression", 0.76).
+symptom_relation("Dysthymic_disorder", "Anxiety_and_nervousness", 0.72).
+symptom_relation("Dysthymic_disorder", "Depressive_or_psychotic_symptoms", 0.44).
+symptom_relation("Dysthymic_disorder", "Insomnia", 0.22).
+symptom_relation("Dysthymic_disorder", "Excessive_anger", 0.07).
+symptom_relation("Dysthymic_disorder", "Low_self-esteem", 0.07).
+symptom_relation("Dysthymic_disorder", "Disturbance_of_memory", 0.06).
+symptom_relation("Dysthymic_disorder", "Temper_problems", 0.04).
+symptom_relation("Dysthymic_disorder", "Fears_and_phobias", 0.04).
+symptom_relation("Dysthymic_disorder", "Slurring_words", 0.03).
+symptom_relation("Dysthymic_disorder", "Loss_of_sex_drive", 0.02).
 
 test_for_condition("Dysthymic_disorder", "Psychotherapy").
 test_for_condition("Dysthymic_disorder", "Mental_health_counseling").
@@ -287,17 +287,17 @@ treatment_for_condition("Dysthymic_disorder", "Lopinavir").
 
 condition("Anxiety", ["Anxiety_and_nervousness","Depression","Sharp_chest_pain","Depressive_or_psychotic_symptoms","Shortness_of_breath","Headache","Insomnia","Palpitations","Abnormal_involuntary_movements","Irregular_heartbeat","Fears_and_phobias","Increased_heart_rate"]).
 
-symptom_relation("Anxiety", "Anxiety_and_nervousness", "0.82").
-symptom_relation("Anxiety", "Depression", "0.43").
-symptom_relation("Anxiety", "Sharp_chest_pain", "0.38").
-symptom_relation("Anxiety", "Depressive_or_psychotic_symptoms", "0.35").
-symptom_relation("Anxiety", "Shortness_of_breath", "0.29").
-symptom_relation("Anxiety", "Headache", "0.27").
-symptom_relation("Anxiety", "Insomnia", "0.24").
-symptom_relation("Anxiety", "Palpitations", "0.13").
-symptom_relation("Anxiety", "Abnormal_involuntary_movements", "0.12").
-symptom_relation("Anxiety", "Irregular_heartbeat", "0.09").
-symptom_relation("Anxiety", "Fears_and_phobias", "0.06").
+symptom_relation("Anxiety", "Anxiety_and_nervousness", 0.82).
+symptom_relation("Anxiety", "Depression", 0.43).
+symptom_relation("Anxiety", "Sharp_chest_pain", 0.38).
+symptom_relation("Anxiety", "Depressive_or_psychotic_symptoms", 0.35).
+symptom_relation("Anxiety", "Shortness_of_breath", 0.29).
+symptom_relation("Anxiety", "Headache", 0.27).
+symptom_relation("Anxiety", "Insomnia", 0.24).
+symptom_relation("Anxiety", "Palpitations", 0.13).
+symptom_relation("Anxiety", "Abnormal_involuntary_movements", 0.12).
+symptom_relation("Anxiety", "Irregular_heartbeat", 0.09).
+symptom_relation("Anxiety", "Fears_and_phobias", 0.06).
 
 test_for_condition("Anxiety", "Psychotherapy").
 test_for_condition("Anxiety", "Electrocardiogram").
@@ -322,17 +322,17 @@ treatment_for_condition("Anxiety", "Phenelzine_(Nardil)").
 
 condition("Schizophrenia", ["Depressive_or_psychotic_symptoms","Delusions_or_hallucinations","Depression","Anxiety_and_nervousness","Hostile_behavior","Fears_and_phobias","Drug_abuse","Insomnia","Temper_problems","Excessive_anger","Hysterical_behavior","Low_self-esteem"]).
 
-symptom_relation("Schizophrenia", "Depressive_or_psychotic_symptoms", "0.6").
-symptom_relation("Schizophrenia", "Delusions_or_hallucinations", "0.56").
-symptom_relation("Schizophrenia", "Depression", "0.43").
-symptom_relation("Schizophrenia", "Anxiety_and_nervousness", "0.32").
-symptom_relation("Schizophrenia", "Hostile_behavior", "0.31").
-symptom_relation("Schizophrenia", "Fears_and_phobias", "0.18").
-symptom_relation("Schizophrenia", "Drug_abuse", "0.14").
-symptom_relation("Schizophrenia", "Insomnia", "0.14").
-symptom_relation("Schizophrenia", "Temper_problems", "0.08").
-symptom_relation("Schizophrenia", "Excessive_anger", "0.06").
-symptom_relation("Schizophrenia", "Hysterical_behavior", "0.03").
+symptom_relation("Schizophrenia", "Depressive_or_psychotic_symptoms", 0.6).
+symptom_relation("Schizophrenia", "Delusions_or_hallucinations", 0.56).
+symptom_relation("Schizophrenia", "Depression", 0.43).
+symptom_relation("Schizophrenia", "Anxiety_and_nervousness", 0.32).
+symptom_relation("Schizophrenia", "Hostile_behavior", 0.31).
+symptom_relation("Schizophrenia", "Fears_and_phobias", 0.18).
+symptom_relation("Schizophrenia", "Drug_abuse", 0.14).
+symptom_relation("Schizophrenia", "Insomnia", 0.14).
+symptom_relation("Schizophrenia", "Temper_problems", 0.08).
+symptom_relation("Schizophrenia", "Excessive_anger", 0.06).
+symptom_relation("Schizophrenia", "Hysterical_behavior", 0.03).
 
 test_for_condition("Schizophrenia", "Psychotherapy").
 test_for_condition("Schizophrenia", "Mental_health_counseling").
@@ -357,126 +357,126 @@ treatment_for_condition("Schizophrenia", "Lithium_(Li)").
 treatment_for_condition("Schizophrenia", "Perphenazine").
 treatment_for_condition("Schizophrenia", "Paliperidone_(Invega)").
 
-symptom("Breathing_fast").
-symptom("Nightmares").
-symptom("Acne_or_pimples").
-symptom("Difficulty_eating").
-symptom("Obsessions_and_compulsions").
-symptom("Abusing_alcohol").
-symptom("Fears_and_phobias").
-symptom("Slurring_words").
-symptom("Restlessness").
-symptom("Depressive_or_psychotic_symptoms").
-symptom("Abnormal_involuntary_movements").
-symptom("Increased_heart_rate").
+symptom("Headache").
+symptom("Irregular_heartbeat").
 symptom("Low_self-esteem").
-symptom("Decreased_appetite").
-symptom("Hostile_behavior").
-symptom("Antisocial_behavior").
-symptom("Excessive_appetite").
-symptom("Loss_of_sex_drive").
+symptom("Lack_of_growth").
 symptom("Vomiting_blood").
 symptom("Disturbance_of_memory").
+symptom("Antisocial_behavior").
+symptom("Excessive_anger").
+symptom("Chest_tightness").
+symptom("Breathing_fast").
+symptom("Depressive_or_psychotic_symptoms").
+symptom("Palpitations").
+symptom("Hysterical_behavior").
+symptom("Increased_heart_rate").
+symptom("Excessive_appetite").
+symptom("Fears_and_phobias").
+symptom("Drug_abuse").
+symptom("Abusing_alcohol").
+symptom("Temper_problems").
+symptom("Dizziness").
+symptom("Abnormal_involuntary_movements").
+symptom("Hostile_behavior").
+symptom("Restlessness").
+symptom("Obsessions_and_compulsions").
+symptom("Shortness_of_breath").
+symptom("Delusions_or_hallucinations").
+symptom("Weight_gain").
+symptom("Loss_of_sex_drive").
 symptom("Insomnia").
-symptom("Lack_of_growth").
+symptom("Nightmares").
+symptom("Fainting").
 symptom("Anxiety_and_nervousness").
 symptom("Sharp_chest_pain").
-symptom("Temper_problems").
-symptom("Hysterical_behavior").
-symptom("Headache").
+symptom("Difficulty_eating").
+symptom("Slurring_words").
+symptom("Decreased_appetite").
+symptom("Acne_or_pimples").
 symptom("Feeling_ill").
-symptom("Irregular_heartbeat").
-symptom("Chest_tightness").
-symptom("Delusions_or_hallucinations").
-symptom("Drug_abuse").
-symptom("Shortness_of_breath").
-symptom("Excessive_anger").
-symptom("Weight_gain").
-symptom("Palpitations").
 symptom("Depression").
-symptom("Fainting").
-symptom("Dizziness").
 
-test("Other_OR_therapeutic_procedures_on_nose;_mouth_and_pharynx").
-test("Occupational_therapy_assessment_(Speech_therapy)").
-test("Varicose_vein_stripping;_lower_limb").
 test("Lipid_panel").
-test("Toxicology_screen").
-test("Diagnostic_spinal_tap_(Spinal_tap)").
-test("Arterio-_or_venogram_(not_heart_and_head)").
-test("Mental_health_counseling").
-test("Electroencephalogram_(EEG)_(Eeg)").
-test("Depression_screen_(Depression_screening)").
-test("Arterial_blood_gases_(ABGs)").
-test("Prothrombin_time_assay_(Prothrombin_time)").
-test("Cerebral_arteriogram_(Angiography_cerebral)").
-test("Other_diagnostic_radiology_and_related_techniques").
-test("Electrocardiogram").
-test("Psychological_and_psychiatric_evaluation_and_therapy").
-test("Psychotherapy").
-test("Blood_alcohol").
 test("Blood_culture").
+test("Diagnostic_spinal_tap_(Spinal_tap)").
+test("Cerebral_arteriogram_(Angiography_cerebral)").
+test("Blood_alcohol").
+test("Psychotherapy").
+test("Varicose_vein_stripping;_lower_limb").
+test("Mental_health_counseling").
+test("Toxicology_screen").
+test("Occupational_therapy_assessment_(Speech_therapy)").
 test("Cardiac_monitoring_(Cardiac_monitor)").
+test("Prothrombin_time_assay_(Prothrombin_time)").
+test("Psychological_and_psychiatric_evaluation_and_therapy").
+test("Other_diagnostic_radiology_and_related_techniques").
+test("Electroencephalogram_(EEG)_(Eeg)").
+test("Arterial_blood_gases_(ABGs)").
+test("Arterio-_or_venogram_(not_heart_and_head)").
+test("Depression_screen_(Depression_screening)").
+test("Electrocardiogram").
+test("Other_OR_therapeutic_procedures_on_nose;_mouth_and_pharynx").
 test("Liver_function_tests_(Liver_test)").
 
-treatment("Oxcarbazepine_(Trileptal)").
-treatment("Flurazepam").
-treatment("Lisdexamfetamine_(Vyvanse)").
-treatment("Fluvoxamine_(Luvox)").
-treatment("Clomipramine").
-treatment("Alprazolam_(Xanax)").
-treatment("Disulfiram_(Antabuse)").
-treatment("Guanfacine_(Intuniv)").
-treatment("Amantadine").
-treatment("Citalopram_(Celexa)").
-treatment("Desvenlafaxine_(Pristiq)").
 treatment("Lithium_(Li)").
-treatment("Oxazepam").
-treatment("Meprobamate_(Miltown)").
-treatment("Haloperidol").
-treatment("Fluoxetine_(Prozac)").
-treatment("Acamprosate_(Campral)").
-treatment("Trazodone").
-treatment("Imipramine").
-treatment("Melatonin").
-treatment("Risperidone").
-treatment("Fluphenazine_(Prolixin)").
-treatment("Lopinavir").
-treatment("L-Methylfolate").
-treatment("Bupropion_(Wellbutrin)").
-treatment("Methylphenidate").
-treatment("Ziprasidone_(Geodon)").
-treatment("Topiramate_(Topamax)").
-treatment("Quetiapine_(Seroquel)").
-treatment("Sertraline_(Zoloft)").
-treatment("Clonidine").
-treatment("Cyproheptadine").
-treatment("Doxepin").
-treatment("Adderall").
-treatment("Clonazepam").
-treatment("Lorazepam").
-treatment("Phenelzine_(Nardil)").
-treatment("Dextroamphetamine_(Adderall)").
-treatment("Aripiprazole_(Abilify)").
-treatment("Eszopiclone_(Lunesta)").
-treatment("Lamotrigine_(Lamictal)").
-treatment("Clorazepate").
-treatment("Chlorpromazine_(Thorazine)").
-treatment("Venlafaxine_(Effexor)").
-treatment("Darunavir_(Prezista)").
-treatment("Benztropine").
-treatment("Minocycline").
-treatment("Buspirone_(Buspar)").
-treatment("Benzoyl_Peroxide_Topical").
-treatment("Atomoxetine_(Strattera)").
-treatment("Tranylcypromine_(Parnate)").
-treatment("Escitalopram_(Lexapro)").
-treatment("Perphenazine").
-treatment("Dexmethylphenidate_(Focalin)").
-treatment("Loxapine").
-treatment("Clozapine").
-treatment("Olanzapine_(Zyprexa)").
-treatment("Paliperidone_(Invega)").
-treatment("Divalproex_Sodium_(Depakote)").
 treatment("Mirtazapine").
+treatment("Citalopram_(Celexa)").
+treatment("Lopinavir").
+treatment("Trazodone").
+treatment("Clonazepam").
+treatment("Minocycline").
 treatment("Paroxetine_(Paxil)").
+treatment("Oxcarbazepine_(Trileptal)").
+treatment("Fluphenazine_(Prolixin)").
+treatment("Olanzapine_(Zyprexa)").
+treatment("Risperidone").
+treatment("Clorazepate").
+treatment("Divalproex_Sodium_(Depakote)").
+treatment("Lisdexamfetamine_(Vyvanse)").
+treatment("Cyproheptadine").
+treatment("Fluoxetine_(Prozac)").
+treatment("Fluvoxamine_(Luvox)").
+treatment("Ziprasidone_(Geodon)").
+treatment("Escitalopram_(Lexapro)").
+treatment("Lamotrigine_(Lamictal)").
+treatment("Melatonin").
+treatment("Tranylcypromine_(Parnate)").
+treatment("L-Methylfolate").
+treatment("Benztropine").
+treatment("Dextroamphetamine_(Adderall)").
+treatment("Acamprosate_(Campral)").
+treatment("Dexmethylphenidate_(Focalin)").
+treatment("Oxazepam").
+treatment("Doxepin").
+treatment("Desvenlafaxine_(Pristiq)").
+treatment("Darunavir_(Prezista)").
+treatment("Guanfacine_(Intuniv)").
+treatment("Eszopiclone_(Lunesta)").
+treatment("Adderall").
+treatment("Lorazepam").
+treatment("Benzoyl_Peroxide_Topical").
+treatment("Clomipramine").
+treatment("Perphenazine").
+treatment("Paliperidone_(Invega)").
+treatment("Methylphenidate").
+treatment("Amantadine").
+treatment("Atomoxetine_(Strattera)").
+treatment("Clonidine").
+treatment("Quetiapine_(Seroquel)").
+treatment("Topiramate_(Topamax)").
+treatment("Loxapine").
+treatment("Phenelzine_(Nardil)").
+treatment("Clozapine").
+treatment("Aripiprazole_(Abilify)").
+treatment("Imipramine").
+treatment("Buspirone_(Buspar)").
+treatment("Chlorpromazine_(Thorazine)").
+treatment("Alprazolam_(Xanax)").
+treatment("Bupropion_(Wellbutrin)").
+treatment("Haloperidol").
+treatment("Flurazepam").
+treatment("Meprobamate_(Miltown)").
+treatment("Disulfiram_(Antabuse)").
+treatment("Sertraline_(Zoloft)").
+treatment("Venlafaxine_(Effexor)").
