@@ -1,0 +1,42 @@
+cases:
+- !!model.CaseDescription
+  age: 21
+  condition: Panic_disorder
+  gender: M
+  symptoms:
+  - Anxiety
+  - Depression
+  tests:
+  - Test3
+  - Test2
+- !!model.CaseDescription
+  age: 21
+  condition: Panic_disorder
+  gender: M
+  symptoms:
+  - Headache
+  - Depression
+  tests:
+  - Test4
+  - Test5
+- !!model.CaseDescription
+  age: 25
+  condition: Panic_disorder
+  gender: F
+  symptoms:
+  - Anxiety
+  - Depression
+  - Anxiety
+  - Mood_swings
+  tests:
+  - Test4
+  - Test5
+- !!model.CaseDescription
+  age: 25
+  condition: Panic_disorder
+  gender: M
+  symptoms:
+  - Headache
+  - Depression
+  tests:
+  - Test2

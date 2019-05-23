@@ -1,5 +1,7 @@
 package similarity;
 
+import java.util.List;
+
 import ucm.gaia.jcolibri.exception.NoApplicableSimilarityFunctionException;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.similarity.LocalSimilarityFunction;
 
@@ -8,23 +10,37 @@ public class SymptomSimilarity implements LocalSimilarityFunction {
 	@Override
 	public double compute(Object value1, Object value2) throws NoApplicableSimilarityFunctionException {
 
-		Boolean val1 = (Boolean) value1;
-		Boolean val2 = (Boolean) value2;
+		@SuppressWarnings("unchecked")
+		List<String> val1 = (List<String>) value1;
+		@SuppressWarnings("unchecked")
+		List<String> val2 = (List<String>) value2;
 		
-		if(val1 && val2) 
-			return 1;
+		double sum = 0;
 		
-		if(!val1 && !val2)
-			return 0.9;
+		for(String st : val1) {
+			if(val2.contains(st)) {
+				sum += 1;
+			} else {
+				sum += 0;
+			}
+		}
 		
-		return 0;
+		for(String st : val2) {
+			if(val1.contains(st)) {
+				sum += 1;
+			} else {
+				sum += 0;
+			}
+		}
+		
+		sum = sum/(val1.size()+val2.size());
+		
+		return sum;
 	}
 
 	@Override
 	public boolean isApplicable(Object value1, Object value2) {
-		if (value1 instanceof Boolean && value2 instanceof Boolean)
-			return true;
-		return false;
+		return true;
 	}
 
 	
