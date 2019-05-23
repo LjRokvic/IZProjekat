@@ -9,6 +9,8 @@ cases:
   tests:
   - Test3
   - Test2
+  treatments:
+  - Lorazepam
 - !!model.CaseDescription
   age: 21
   condition: Panic_disorder
@@ -19,18 +21,8 @@ cases:
   tests:
   - Test4
   - Test5
-- !!model.CaseDescription
-  age: 25
-  condition: Panic_disorder
-  gender: F
-  symptoms:
-  - Anxiety
-  - Depression
-  - Anxiety
-  - Mood_swings
-  tests:
-  - Test4
-  - Test5
+  treatments:
+  - Alprazolam_(Xanax)
 - !!model.CaseDescription
   age: 25
   condition: Panic_disorder
@@ -40,3 +32,6 @@ cases:
   - Depression
   tests:
   - Test2
+  treatments:
+  - Lorazepam
+  - Alprazolam_(Xanax)

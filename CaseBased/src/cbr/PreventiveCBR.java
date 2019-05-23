@@ -135,10 +135,7 @@ public class PreventiveCBR implements StandardCBRApplication {
 		pD.setGender('M');
 		
 		pD.getPastConditions().add("Anxiety");
-
 		pD.getFamilyHistory().add("Depression");
-
-		
 		pD.getOtherRiskFactors().add("Stress");
 		
 		 

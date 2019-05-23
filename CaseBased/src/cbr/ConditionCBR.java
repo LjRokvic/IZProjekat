@@ -92,7 +92,7 @@ public class ConditionCBR implements StandardCBRApplication {
 
 	public void cycle(CBRQuery query) throws ExecutionException {
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
-		eval = SelectCases.selectTopKRR(eval, 1);
+		eval = SelectCases.selectTopKRR(eval, 3);
 		System.out.println("Retrieved cases:");
 		for (RetrievalResult nse : eval) {
 			System.out.println(nse.get_case().getDescription() + " -> " + nse.getEval());
@@ -127,11 +127,14 @@ public class ConditionCBR implements StandardCBRApplication {
 		cd1.getSymptoms().add("Depression");
 
 		cbr.evaluateCase(cd1);
-		cbr.evaluateCase(cd1);
-		cbr.evaluateCase(cd1);
+		//cbr.evaluateCase(cd1);
+		//cbr.evaluateCase(cd1);
 
 		cd1.setCondition("Panic_disorder");
 		cd1.getTests().add("Test2");
+		cd1.getTreatments().add("Lorazepam");
+		cd1.getTreatments().add("Alprazolam_(Xanax)");
+
 
 		try {
 			//cbr.addEntry(cd1);
@@ -198,6 +201,7 @@ public class ConditionCBR implements StandardCBRApplication {
 		cd1.getTests().add("Test3");
 		cd1.getTests().add("Test2");
 		cd1.setCondition("Panic_disorder");
+		cd1.getTreatments().add("Lorazepam");
 
 		CaseDescription cd2 = new CaseDescription();
 
@@ -208,6 +212,7 @@ public class ConditionCBR implements StandardCBRApplication {
 		cd2.getTests().add("Test4");
 		cd2.getTests().add("Test5");
 		cd2.setCondition("Panic_disorder");
+		cd2.getTreatments().add("Alprazolam_(Xanax)");
 
 		cc.getCases().add(cd1);
 		cc.getCases().add(cd2);

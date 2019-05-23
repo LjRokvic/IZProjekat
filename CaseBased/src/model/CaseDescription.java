@@ -17,56 +17,82 @@ public class CaseDescription implements CaseComponent {
 	
 	private String condition;
 
+	private List<String> treatments = new ArrayList<String>();
+
+	
 	@Override
 	public Attribute getIdAttribute() {
 		return null;
 	}
 
+
 	@Override
 	public String toString() {
 		return "CaseDescription [gender=" + gender + ", age=" + age + ", symptoms=" + symptoms + ", tests=" + tests
-				+ ", condition=" + condition + "]";
+				+ ", condition=" + condition + ", treatments=" + treatments + "]";
 	}
+
 
 	public char getGender() {
 		return gender;
 	}
 
+
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
+
 
 	public int getAge() {
 		return age;
 	}
 
+
 	public void setAge(int age) {
 		this.age = age;
 	}
+
 
 	public List<String> getSymptoms() {
 		return symptoms;
 	}
 
+
 	public void setSymptoms(List<String> symptoms) {
 		this.symptoms = symptoms;
 	}
+
 
 	public List<String> getTests() {
 		return tests;
 	}
 
+
 	public void setTests(List<String> tests) {
 		this.tests = tests;
 	}
+
 
 	public String getCondition() {
 		return condition;
 	}
 
+
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
+
+
+	public List<String> getTreatments() {
+		return treatments;
+	}
+
+
+	public void setTreatments(List<String> treatments) {
+		this.treatments = treatments;
+	}
+
+
 	
 	
 	
