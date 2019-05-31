@@ -1,0 +1,10 @@
+Panic_disorder
+Eating_disorder
+Attention_deficit_hyperactivity_disorder_(ADHD)
+Asperger_syndrome
+Bipolar_disorder
+Obsessive_compulsive_disorder_(OCD)
+Post-traumatic_stress_disorder_(PTSD)
+Dysthymic_disorder
+Anxiety
+Schizophrenia
