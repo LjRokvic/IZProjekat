@@ -1,4 +1,4 @@
-package similarity;
+package com.inz.projekat.similarity;
 
 import java.util.List;
 

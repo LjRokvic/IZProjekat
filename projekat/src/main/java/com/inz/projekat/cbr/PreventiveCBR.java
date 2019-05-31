@@ -1,4 +1,4 @@
-package cbr;
+package com.inz.projekat.cbr;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,11 +9,11 @@ import java.util.Map;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
-import com.inz.projekat.model.dto.CaseContainer;
-import com.inz.projekat.model.dto.CaseDescription;
+import com.inz.projekat.connector.YamlPreventionConnector;
+import com.inz.projekat.model.dto.PreventiveContainer;
+import com.inz.projekat.model.dto.PreventiveDescription;
+import com.inz.projekat.similarity.SymptomSimilarity;
 
-import connector.YamlConnector;
-import similarity.SymptomSimilarity;
 import ucm.gaia.jcolibri.casebase.LinealCaseBase;
 import ucm.gaia.jcolibri.cbraplications.StandardCBRApplication;
 import ucm.gaia.jcolibri.cbrcore.Attribute;
@@ -30,7 +30,7 @@ import ucm.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Equal;
 import ucm.gaia.jcolibri.method.retrieve.NNretrieval.similarity.local.Interval;
 import ucm.gaia.jcolibri.method.retrieve.selection.SelectCases;
 
-public class ConditionCBR implements StandardCBRApplication {
+public class PreventiveCBR implements StandardCBRApplication {
 
 	Connector _connector;
 	/** Connector object */
@@ -44,23 +44,33 @@ public class ConditionCBR implements StandardCBRApplication {
 	/** KNN configuration */
 
 	public void configure() throws ExecutionException {
-		_connector = new YamlConnector();
+		_connector = new YamlPreventionConnector();
 
 		_caseBase = new LinealCaseBase(); // Create a Lineal case base for in-memory organization
 
 		simConfig = new NNConfig(); // KNN configuration
 		simConfig.setDescriptionSimFunction(new Average()); // global similarity function = average
 
-		Attribute gender = new Attribute("gender", CaseDescription.class);
+		Attribute gender = new Attribute("gender", PreventiveDescription.class);
 		simConfig.setWeight(gender, 0.1);
 		simConfig.addMapping(gender, new Equal());
 
-		Attribute age = new Attribute("age", CaseDescription.class);
+		Attribute age = new Attribute("age", PreventiveDescription.class);
 		simConfig.setWeight(age, 0.1);
 		simConfig.addMapping(age, new Interval(5));
-
-		simConfig.addMapping(new Attribute("symptoms", CaseDescription.class), new SymptomSimilarity());
-		// simConfig.addMapping(new Attribute("tests", CaseDescription.class), new
+		
+		Attribute pastConditions = new Attribute("pastConditions", PreventiveDescription.class);
+		simConfig.setWeight(pastConditions, 1.0);
+		simConfig.addMapping(pastConditions, new SymptomSimilarity());
+	
+		Attribute familyHistory = new Attribute("familyHistory", PreventiveDescription.class);
+		simConfig.setWeight(familyHistory, 0.7);
+		simConfig.addMapping(familyHistory, new SymptomSimilarity());
+		
+		Attribute otherRiskFactors = new Attribute("otherRiskFactors", PreventiveDescription.class);
+		simConfig.setWeight(otherRiskFactors, 0.3);
+		simConfig.addMapping(otherRiskFactors, new SymptomSimilarity());
+		
 		// SymptomSimilarity());
 
 		// Equal - returns 1 if both individuals are equal, otherwise returns 0
@@ -81,7 +91,7 @@ public class ConditionCBR implements StandardCBRApplication {
 		// TableSimilarity(List<String> values).setSimilarity(value1,value2,similarity)
 	}
 
-	public ConditionCBR() {
+	public PreventiveCBR() {
 		super();
 		try {
 			this.configure();
@@ -93,7 +103,7 @@ public class ConditionCBR implements StandardCBRApplication {
 
 	public void cycle(CBRQuery query) throws ExecutionException {
 		Collection<RetrievalResult> eval = NNScoringMethod.evaluateSimilarity(_caseBase.getCases(), query, simConfig);
-		eval = SelectCases.selectTopKRR(eval, 3);
+		eval = SelectCases.selectTopKRR(eval, 5);
 		System.out.println("Retrieved cases:");
 		for (RetrievalResult nse : eval) {
 			System.out.println(nse.get_case().getDescription() + " -> " + nse.getEval());
@@ -115,44 +125,39 @@ public class ConditionCBR implements StandardCBRApplication {
 			System.out.println(c.getDescription());
 		return _caseBase;
 	}
-	
-	/*
-
+/*
 	public static void main(String[] args) {
 
-		ConditionCBR cbr = new ConditionCBR();
+		PreventiveCBR cbr = new PreventiveCBR();
+				
+		PreventiveDescription pD = new PreventiveDescription();
 
-		CaseDescription cd1 = new CaseDescription();
-
-		cd1.setAge(25);
-		cd1.setGender('M');
-		cd1.getSymptoms().add("Headache");
-		cd1.getSymptoms().add("Depression");
-
-		cbr.evaluateCase(cd1);
-		//cbr.evaluateCase(cd1);
-		//cbr.evaluateCase(cd1);
-
-		cd1.setCondition("Panic_disorder");
-		cd1.getTests().add("Test2");
-		cd1.getTreatments().add("Lorazepam");
-		cd1.getTreatments().add("Alprazolam_(Xanax)");
-
+		pD.setAge(27);
+		pD.setGender('M');
+		
+		pD.getPastConditions().add("Anxiety");
+		pD.getFamilyHistory().add("Depression");
+		pD.getOtherRiskFactors().add("Stress");
+		
+		 
+		cbr.evaluateCase(pD);
+		
+		pD.getRecommendedPreventiveTests().add("Mental_screening");
 
 		try {
-			//cbr.addEntry(cd1);
+			//cbr.addEntry(pD);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-	 */
-	public Collection<RetrievalResult> evaluateCase(CaseDescription cD) {
+*/
+	public Collection<RetrievalResult> evaluateCase(PreventiveDescription pD) {
 		try {
 			
 			CBRQuery query = new CBRQuery();
 
-			query.setDescription(cD);
+			query.setDescription(pD);
 			
 			cycle(query);
 
@@ -166,19 +171,19 @@ public class ConditionCBR implements StandardCBRApplication {
 	}
 
 
-	public void addEntry(CaseDescription cD) throws IOException {
+	public void addEntry(PreventiveDescription pD) throws IOException {
 
 		Map<String, Object> data = new HashMap<String, Object>();
 
 		Collection<CBRCase> cases = _caseBase.getCases();
 		
-		CaseContainer cC = new CaseContainer();
+		PreventiveContainer pC = new PreventiveContainer();
 		for (CBRCase c : cases) {
-			cC.getCases().add((CaseDescription) c.getDescription());
+			pC.getCases().add((PreventiveDescription) c.getDescription());
 		}
-		cC.getCases().add(cD);
+		pC.getCases().add(pD);
 
-		data.put("cases", cC.getCases());
+		data.put("cases", pC.getCases());
 
 		DumperOptions options = new DumperOptions();
 		options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
@@ -186,7 +191,7 @@ public class ConditionCBR implements StandardCBRApplication {
 
 		Yaml yaml = new Yaml(options);
 
-		FileWriter writer = new FileWriter("data/cases.yaml");
+		FileWriter writer = new FileWriter("data/preventive.yaml");
 		yaml.dump(data, writer);
 
 	}
@@ -194,33 +199,40 @@ public class ConditionCBR implements StandardCBRApplication {
 	public static void seedWriter() throws IOException {
 		Map<String, Object> data = new HashMap<String, Object>();
 
-		CaseContainer cc = new CaseContainer();
-		CaseDescription cd1 = new CaseDescription();
+		PreventiveContainer pC = new PreventiveContainer();
+		PreventiveDescription pD1 = new PreventiveDescription();
 
-		cd1.setAge(21);
-		cd1.setGender('M');
-		cd1.getSymptoms().add("Anxiety");
-		cd1.getSymptoms().add("Depression");
-		cd1.getTests().add("Test3");
-		cd1.getTests().add("Test2");
-		cd1.setCondition("Panic_disorder");
-		cd1.getTreatments().add("Lorazepam");
+		pD1.setAge(21);
+		pD1.setGender('M');
+		
+		pD1.getPastConditions().add("Depression");
+		pD1.getPastConditions().add("Anxiety");
 
-		CaseDescription cd2 = new CaseDescription();
+		
+		pD1.getFamilyHistory().add("Depression");
 
-		cd2.setAge(21);
-		cd2.setGender('M');
-		cd2.getSymptoms().add("Headache");
-		cd2.getSymptoms().add("Depression");
-		cd2.getTests().add("Test4");
-		cd2.getTests().add("Test5");
-		cd2.setCondition("Panic_disorder");
-		cd2.getTreatments().add("Alprazolam_(Xanax)");
+		
+		pD1.getOtherRiskFactors().add("Stress");
+		
+		pD1.getRecommendedPreventiveTests().add("Mental_screening");
 
-		cc.getCases().add(cd1);
-		cc.getCases().add(cd2);
+		
+		PreventiveDescription pD2 = new PreventiveDescription();
 
-		data.put("cases", cc.getCases());
+		pD2.setAge(25);
+		pD2.setGender('F');
+		
+		pD2.getPastConditions().add("Anxiety");
+		
+		pD2.getOtherRiskFactors().add("Stress");
+		
+		pD2.getRecommendedPreventiveTests().add("Anxiety_test");
+
+
+		pC.getCases().add(pD1);
+		pC.getCases().add(pD2);
+
+		data.put("cases", pC.getCases());
 
 		DumperOptions options = new DumperOptions();
 		options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
@@ -228,7 +240,7 @@ public class ConditionCBR implements StandardCBRApplication {
 
 		Yaml yaml = new Yaml(options);
 
-		FileWriter writer = new FileWriter("data/cases.yaml");
+		FileWriter writer = new FileWriter("data/preventive.yaml");
 		yaml.dump(data, writer);
 	}
 

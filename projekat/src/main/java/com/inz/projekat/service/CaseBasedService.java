@@ -6,13 +6,13 @@ import java.util.Collection;
 
 import org.springframework.stereotype.Service;
 
+import com.inz.projekat.cbr.ConditionCBR;
+import com.inz.projekat.cbr.PreventiveCBR;
 import com.inz.projekat.model.dto.CaseContainer;
 import com.inz.projekat.model.dto.CaseDescription;
 import com.inz.projekat.model.dto.PreventiveContainer;
 import com.inz.projekat.model.dto.PreventiveDescription;
 
-import cbr.ConditionCBR;
-import cbr.PreventiveCBR;
 import ucm.gaia.jcolibri.method.retrieve.RetrievalResult;
 import ucm.gaia.jcolibri.method.retrieve.selection.SelectCases;
 

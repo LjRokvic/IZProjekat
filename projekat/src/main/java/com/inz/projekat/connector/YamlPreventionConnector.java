@@ -1,4 +1,4 @@
-package connector;
+package com.inz.projekat.connector;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
