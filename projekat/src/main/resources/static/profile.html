@@ -1,0 +1,168 @@
+<head>
+    <title>Inzenjering Znanja</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
+
+    <!-- jQuery & Bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+      
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link href="css/fSelect.css" rel="stylesheet">
+    <script type="text/javascript" src="js/fSelect.js"></script>
+
+    <script type="text/javascript" src="js/cbr.js"></script>
+    <script type="text/javascript" src="js/rule.js"></script>
+</head>
+
+<div id="navbar-frame" style="font-size:15px"></div>
+<hr>
+
+<div class="container bootstrap snippet">
+    <div class="row">
+        <div class="col-sm-10"><h1 id="nameDisplay"></h1></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3"><!--left col-->
+
+
+            <div class="text-center">
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                     alt="avatar">
+            </div>
+            </hr><br>
+
+            <ul class="list-group">
+                <li class="list-group-item text-muted"> <i class="fa fa-dashboard fa-1x"><b id="name_val">Somebody Dunno</b></i></li>
+                <li class="list-group-item text-muted">Age: <b id="age_val">25</b></li>
+                <li class="list-group-item text-muted">Gender: <b id="gender_val">M</b></li>
+                <li class="list-group-item text-muted">Medical History: </li>
+                <li class="list-group-item text-center">
+                    <p>Bolest 1</p>
+                    <p>Bolest 2</p>
+                </li>
+
+
+            </ul>
+
+        </div><!--/col-3-->
+        <div class="col-sm-9">
+            <ul class="nav nav-tabs">
+                <li class="active" id="cbrPage" ><a data-toggle="tab" href="#cbr">Case Based Diagnosis</a></li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+
+                <li id="rulePage" ><a data-toggle="tab" href="#rules">Rule Based Diagnosis</a></li>&nbsp;&nbsp;&nbsp;
+            </ul>
+
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="cbr">
+
+                    <h2>Case Based Diagnosis</h2>
+                    <br>
+                    <b style="font-size: 24px">Symptoms: </b>
+                    <br>
+                    <br>
+                     <select id="symptoms_select" multiple="multiple">
+                        <optgroup id="symptoms_grp" label="Symptoms: ">
+                            <option value="Anxiety_and_nervousness">Anxiety_and_nervousness</option>
+                            <option value="Depression">Depression</option>
+                            <option value="Shortness_of_breath">Shortness_of_breath</option>
+                            <option value="Depressive_or_psychotic_symptoms">Depressive_or_psychotic_symptoms</option>
+                        </optgroup>
+                    </select>
+
+                        <button id="evaluate_btn" type="button" class="btn btn-success" style ="margin-bottom: 30px; margin-left: 15px">Evaluate</button>
+
+
+                    <br>
+                    <br>
+
+                    <b style="font-size: 24px">Results: </b>
+                    <br>
+                    <br>
+                 <table id="cbrResultTable" class="display responsive dataTable dtr-inline collapsed table table-striped table-hover table-bordered" role="grid" style="width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>Number: </th>
+                            <th>Similarity (%): </th>
+                            <th>Tests: </th>
+                            <th>Diagnosis: </th>
+                            <th>Treatments: </th>
+                        </tr>
+                        </thead>
+                        <tbody id="cbrResultTable">
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <br>
+
+                    <hr>
+                    <hr>  
+
+                    <br>
+                    <b style="font-size: 24px">Tests: </b>
+                    <br>
+                    <select id="tests_select" multiple="multiple">
+                        <optgroup id="tests_grp" label="Tests: ">
+
+                        </optgroup>
+                    </select>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <b style="font-size: 24px">Treatments: </b>
+                    <br>
+                    <select id="treatments_select" multiple="multiple">
+                        <optgroup id="treatments_grp" label="Treatments: ">
+
+                        </optgroup>
+                    </select>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <b style="font-size: 24px">Diagnosis: </b>
+                    <br>
+
+                    <select id="diagnosis_select" style="width:200px; height:35px">
+                        <optgroup id="diagnosis_grp" label="Diagnosis: ">
+
+                        </optgroup>
+                    </select>
+                <button type="button" class="btn btn-success" style ="margin-bottom: 5px; margin-left: 15px">Make diagnosis</button>
+                <hr>  
+
+
+                </div><!--/tab-pane-->
+                <div class="tab-pane" id="rules">
+                    <h2>Friend Requests</h2>
+                    <table id="requestsTable" class="display responsive dataTable dtr-inline collapsed table table-striped table-hover table-bordered" role="grid" style="width: 100%;">
+                        <thead>
+                        <tr>
+                            <th>Name:</th>
+                            <th>Last Name:</th>
+                            <!--<th> Address:</th>-->
+                        </tr>
+                        </thead>
+                        <tbody id="requestsTableBody">
+                        </tbody>
+                    </table>
+
+                    <hr>
+
+                </div>
+
+            </div><!--/tab-pane-->
+        </div><!--/tab-content-->
+
+    </div><!--/col-9-->
+</div><!--/row-->

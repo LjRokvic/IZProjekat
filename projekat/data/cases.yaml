@@ -4,7 +4,7 @@ cases:
   condition: Panic_disorder
   gender: M
   symptoms:
-  - Anxiety
+  - Anxiety_and_nervousness
   - Depression
   tests:
   - Test3
