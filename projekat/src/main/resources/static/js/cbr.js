@@ -3,11 +3,6 @@ $(function() {
     var id = getUrlParameter("id");
 
 
-    $('#symptoms_select').fSelect();
-    $('#tests_select').fSelect();
-    $('#treatments_select').fSelect();
-
-
  $('#evaluate_btn').on('click', function(event) {
         event.preventDefault();
 
@@ -42,12 +37,12 @@ $(function() {
         event.preventDefault();
 
         var syms = $('select#symptoms_select').val();
-        var tests = $('select#symptoms_select').val();
-        var dia = $('select#symptoms_select').val();
-        var treats = $('select#symptoms_select').val();
+        var tests = $('select#tests_select').val();
+        var dia = $('select#diagnosis_select').val();
+        var treats = $('select#treatments_select').val();
 
         $.ajax({
-            url: "/cbr/evaluate/new?id="+id,
+            url: "/cbr/evaluate/add?id="+id,
             type: 'POST',
             data: JSON.stringify({
                 age: 10,
@@ -77,26 +72,30 @@ $(function() {
         	for(val in data) {
         		addSymptoms(data[val]);
         	}
+        	$('#symptoms_select').fSelect();
         }
     });
+    sleep(150);
 	 $.get({
         url: '/api/test',
         success: function (data) {
         	for(val in data) {
         		addTests(data[val]);
         	}
+        $('#tests_select').fSelect();
         }
     });
-
+	sleep(150);
      $.get({
         url: '/api/treatment',
         success: function (data) {
         	for(val in data) {
         		addTreatments(data[val]);
         	}
+           $('#treatments_select').fSelect();
         }
     });
-
+	sleep(150);
      $.get({
         url: '/api/condition',
         success: function (data) {
@@ -105,6 +104,7 @@ $(function() {
         	}
         }
     });
+
 
 });
 
@@ -152,3 +152,12 @@ var getUrlParameter = function getUrlParameter(sParam) {
         }
     }
 };
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
