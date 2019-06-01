@@ -24,7 +24,7 @@ public class Patient {
     
     private char gender;
 
-    private boolean isMale;
+
 
    @OneToMany(targetEntity = Condition.class, fetch = FetchType.EAGER)
     private List<Condition> conditions;
@@ -35,10 +35,10 @@ public class Patient {
 
     }
 
-    public Patient(String name, String lastName, boolean isMale, int age, char gender) {
+    public Patient(String name, String lastName, int age, char gender) {
         this.name = name;
         this.lastName = lastName;
-        this.isMale = isMale;
+
         this.conditions = new ArrayList<>();
         this.age = age;
         this.gender = gender;
@@ -76,13 +76,7 @@ public class Patient {
         this.lastName = lastName;
     }
 
-    public boolean isMale() {
-        return isMale;
-    }
 
-    public void setMale(boolean male) {
-        isMale = male;
-    }
 
     public List<Condition> getConditions() {
         return conditions;

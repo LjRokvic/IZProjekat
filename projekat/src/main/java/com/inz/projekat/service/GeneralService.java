@@ -2,6 +2,7 @@ package com.inz.projekat.service;
 
 import com.inz.projekat.model.Patient;
 import com.inz.projekat.repository.PatientRepo;
+import com.inz.projekat.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +13,23 @@ import com.ugos.jiprolog.engine.JIPEngine;
 import com.ugos.jiprolog.engine.JIPQuery;
 import com.ugos.jiprolog.engine.JIPTerm;
 import com.ugos.jiprolog.engine.JIPVariable;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 
 @Service
+@Transactional(propagation = Propagation.SUPPORTS)
 public class GeneralService {
 
     @Autowired
     private PatientRepo patientRepo;
+
+    @Autowired
+    private Utils utils;
+
+    public GeneralService() {
+    }
 
     @SuppressWarnings("Duplicates")
     private String getCorrect(String input){
@@ -28,11 +39,34 @@ public class GeneralService {
         return out;
     }
 
+    public Boolean delete(Long id){
+
+        Patient p = patientRepo.findFirstById(id);
+       if (p != null){
+           patientRepo.delete(p);
+           return true;
+       }
+       return  false;
+    }
+
+    public Patient update(Patient forUpdate){
+
+        Patient p = patientRepo.findFirstById(forUpdate.getId());
+
+        p.setLastName(forUpdate.getLastName());
+        p.setName(forUpdate.getName());
+        p.setAge(forUpdate.getAge());
+        p.setConditions(forUpdate.getConditions());
+        p.setGender(forUpdate.getGender());
+
+        return p;
+    }
+
+
+
     public List<String> getAllSymptoms(){
 
-        JIPEngine engine = new JIPEngine();
-
-        engine.consultFile("corpus.pl");
+        JIPEngine engine = utils.getJipEngine();
         JIPQuery query = engine.openSynchronousQuery("symptom(X)");
 
         // pravila se mogu dodavati i tokom izvrsavanja (u runtime-u)
@@ -58,11 +92,10 @@ public class GeneralService {
     }
 
     @SuppressWarnings("Duplicates")
+
     public List<String> getAllConditions(){
 
-        JIPEngine engine = new JIPEngine();
-
-        engine.consultFile("corpus.pl");
+        JIPEngine engine = utils.getJipEngine();
         JIPQuery query = engine.openSynchronousQuery("condition(X, Y)");
 
         List<String> condList = new ArrayList<>();
@@ -80,10 +113,9 @@ public class GeneralService {
     }
 
     @SuppressWarnings("Duplicates")
-    public List<String> getAllTests(){
-        JIPEngine engine = new JIPEngine();
 
-        engine.consultFile("corpus.pl");
+    public List<String> getAllTests(){
+        JIPEngine engine = utils.getJipEngine();
         JIPQuery query = engine.openSynchronousQuery("test(X)");
 
         List<String> condList = new ArrayList<>();
@@ -101,10 +133,9 @@ public class GeneralService {
     }
 
     @SuppressWarnings("Duplicates")
-    public List<String> getAllTreatments(){
-        JIPEngine engine = new JIPEngine();
 
-        engine.consultFile("corpus.pl");
+    public List<String> getAllTreatments(){
+        JIPEngine engine = utils.getJipEngine();
         JIPQuery query = engine.openSynchronousQuery("treatment(X)");
 
         List<String> condList = new ArrayList<>();
@@ -129,7 +160,7 @@ public class GeneralService {
         a.setConditions(insert.getConditions());
         a.setName(insert.getName());
         a.setLastName(insert.getLastName());
-        a.setMale(insert.isMale());
+        a.setGender(insert.getGender());
         patientRepo.save(a);
         return a;
     }

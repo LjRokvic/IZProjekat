@@ -4,6 +4,7 @@ import com.inz.projekat.model.Patient;
 import com.inz.projekat.service.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +49,21 @@ public class GeneralController {
     @RequestMapping(value = "/patient", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<Patient> getAllPatients(){
         return generalService.listAllPatients();
+    }
+
+    @RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
+    public ResponseEntity<String> deletePatient(@PathVariable Long id)
+    {
+        if (generalService.delete(id)){
+            return ResponseEntity.ok().build();
+        }else {
+           return ResponseEntity.notFound().build();
+        }
+    }
+
+    @RequestMapping(value = "/patient", method = RequestMethod.PUT)
+    public Patient updatePatient(@PathVariable Patient patient){
+        return generalService.update(patient);
     }
 
     @RequestMapping(value = "/treatment", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})

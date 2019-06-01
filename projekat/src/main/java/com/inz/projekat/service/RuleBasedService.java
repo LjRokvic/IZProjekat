@@ -2,9 +2,13 @@ package com.inz.projekat.service;
 
 
 import com.inz.projekat.DTO.ResponseDTO;
+import com.inz.projekat.utils.Utils;
 import com.ugos.jiprolog.engine.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +16,16 @@ import java.util.List;
 
 
 @Service
+@Transactional(propagation = Propagation.SUPPORTS)
 public class RuleBasedService {
 
-    private String corFile = "corpus.pl";
+
+
+    @Autowired
+    private Utils utils;
+
+    public RuleBasedService() {
+    }
 
     @SuppressWarnings("Duplicates")
     private String getCorrect(String input){
@@ -55,8 +66,7 @@ public class RuleBasedService {
 
     private JIPQuery consult(String term){
         System.out.println(term);
-        JIPEngine engine = new JIPEngine();
-        engine.consultFile(corFile);
+        JIPEngine engine = utils.getJipEngine();
         return engine.openSynchronousQuery(term);
 
     }
@@ -130,8 +140,7 @@ public class RuleBasedService {
     public List<ResponseDTO> getBestPerc(List<String> conditions, List<String> symptoms){
         List<ResponseDTO> stringList = new ArrayList<>();
         JIPTerm solution;
-        JIPEngine engine = new JIPEngine();
-        engine.consultFile(corFile);
+        JIPEngine engine = utils.getJipEngine();
         String term = "diagnose_perc(["+ getList(conditions)+"],["+ getList(symptoms)+"], Con,Prob, NumC, DecList)";
         JIPQuery query =  engine.openSynchronousQuery(term);
         while((solution = query.nextSolution()) != null){
@@ -165,8 +174,7 @@ public class RuleBasedService {
     public List<ResponseDTO> getBestPercSymptomOnly( List<String> symptoms){
         List<ResponseDTO> stringList = new ArrayList<>();
         JIPTerm solution;
-        JIPEngine engine = new JIPEngine();
-        engine.consultFile(corFile);
+        JIPEngine engine = utils.getJipEngine();
         String term = "best_by_percentage(["+ getList(symptoms)+"], Con,NumC, DecList)";
         JIPQuery query =  engine.openSynchronousQuery(term);
         while((solution = query.nextSolution()) != null){
@@ -196,8 +204,7 @@ public class RuleBasedService {
     public List<ResponseDTO> getBestNum(List<String> conditions, List<String> symptoms){
         List<ResponseDTO> stringList = new ArrayList<>();
         JIPTerm solution;
-        JIPEngine engine = new JIPEngine();
-        engine.consultFile(corFile);
+        JIPEngine engine = utils.getJipEngine();
         String term = "diagnose_number(["+ getList(conditions)+"],["+ getList(symptoms) + "] , Con,NumC, DecList)";
         JIPQuery query =  engine.openSynchronousQuery(term);
         while((solution = query.nextSolution()) != null){
@@ -230,8 +237,7 @@ public class RuleBasedService {
     public List<ResponseDTO> getBestNumSymptomOnly(List<String> conditions){
         List<ResponseDTO> stringList = new ArrayList<>();
         JIPTerm solution;
-        JIPEngine engine = new JIPEngine();
-        engine.consultFile(corFile);
+        JIPEngine engine = utils.getJipEngine();
         String term = "best_by_number(["+ getList(conditions)+"], Con,NumC, DecList)";
         JIPQuery query =  engine.openSynchronousQuery(term);
         while((solution = query.nextSolution()) != null){
@@ -262,8 +268,7 @@ public class RuleBasedService {
     public List<ResponseDTO> getAll(List<String> conditions){
         List<ResponseDTO> stringList = new ArrayList<>();
         JIPTerm solution;
-        JIPEngine engine = new JIPEngine();
-        engine.consultFile(corFile);
+        JIPEngine engine = utils.getJipEngine();
         String term = "number_of_symptoms(["+ getList(conditions)+"], Con, Prob, NumC, DecList)";
         JIPQuery query =  engine.openSynchronousQuery(term);
         while((solution = query.nextSolution()) != null){
