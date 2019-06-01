@@ -1,5 +1,9 @@
 package com.inz.projekat.service;
 
+
+import com.inz.projekat.model.Patient;
+import com.inz.projekat.repository.PatientRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,6 +18,16 @@ import com.ugos.jiprolog.engine.JIPVariable;
 @Service
 public class GeneralService {
 
+    @Autowired
+    private PatientRepo patientRepo;
+
+    @SuppressWarnings("Duplicates")
+    private String getCorrect(String input){
+        String out;
+        int le = input.length()-1;
+        out = input.subSequence(1,le).toString().replace('_',' ');
+        return out;
+    }
 
     public List<String> getAllSymptoms(){
 
@@ -29,17 +43,22 @@ public class GeneralService {
         List<String> symptomList = new ArrayList<String>();
         JIPTerm solution;
         while ( (solution = query.nextSolution()) != null) {
-            System.out.println("solution: " + solution);
+
             for (JIPVariable var: solution.getVariables()) {
-                //System.out.println(var.getName() + "=" + var.getValue());
+
                 // Only one variable
-                symptomList.add(var.getValue().toString());
+                if (var != null){
+              //      System.out.println(var.getName() + "=" + var.getValue());
+                    symptomList.add(getCorrect(var.getValue().toString()));
+                }
+
             }
         }
 
         return symptomList;
     }
 
+    @SuppressWarnings("Duplicates")
     public List<String> getAllConditions(){
 
         JIPEngine engine = new JIPEngine();
@@ -47,21 +66,60 @@ public class GeneralService {
         engine.consultFile("corpus.pl");
         JIPQuery query = engine.openSynchronousQuery("condition(X, Y)");
 
-        List<String> symptomList = new ArrayList<String>();
+        List<String> condList = new ArrayList<>();
         JIPTerm solution;
         while ( (solution = query.nextSolution()) != null) {
-            System.out.println("solution: " + solution);
+            //System.out.println("solution: " + solution);
             for (JIPVariable var: solution.getVariables()) {
                 if (var.getName().equalsIgnoreCase("X")){
-                    symptomList.add(var.getValue().toString());
+                    condList.add(getCorrect(var.getValue().toString()));
                 }
             }
         }
 
-        return symptomList;
+        return condList;
     }
 
+    @SuppressWarnings("Duplicates")
+    public List<String> getAllTests(){
+        JIPEngine engine = new JIPEngine();
 
+        engine.consultFile("corpus.pl");
+        JIPQuery query = engine.openSynchronousQuery("test(X)");
+
+        List<String> condList = new ArrayList<>();
+        JIPTerm solution;
+        while ( (solution = query.nextSolution()) != null) {
+            //System.out.println("solution: " + solution);
+            for (JIPVariable var: solution.getVariables()) {
+                if (var.getName().equalsIgnoreCase("X")){
+                    condList.add(getCorrect(var.getValue().toString()));
+                }
+            }
+        }
+
+        return condList;
+    }
+
+    public Patient addPatient(Patient insert){
+
+        Patient a = new Patient();
+        a.setAge(insert.getAge());
+        a.setConditions(insert.getConditions());
+        a.setName(insert.getName());
+        a.setLastName(insert.getLastName());
+        a.setMale(insert.isMale());
+        patientRepo.save(a);
+        return a;
+    }
+
+    public List<Patient> listAllPatients(){
+        return patientRepo.findAll();
+    }
+
+    public Patient getPatient(Long id){
+        return patientRepo.findFirstById(id);
+    }
 
 
 }
