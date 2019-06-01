@@ -50,3 +50,74 @@ cases:
   treatments:
   - Lorazepam
   - Alprazolam (Xanax)
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 10
+  condition: Anxiety
+  gender: M
+  symptoms:
+  - Depression
+  tests:
+  - Mental health counseling
+  - Psychotherapy
+  treatments:
+  - Trazodone
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 24
+  condition: Anxiety
+  gender: M
+  symptoms:
+  - Depression
+  tests:
+  - Mental health counseling
+  - Psychotherapy
+  treatments:
+  - Benzoyl Peroxide Topical
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 24
+  condition: Bipolar disorder
+  gender: M
+  symptoms:
+  - Depression
+  - Depressive or psychotic symptoms
+  tests:
+  - Mental health counseling
+  treatments:
+  - Haloperidol
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 24
+  condition: Eating disorder
+  gender: M
+  symptoms:
+  - Anxiety and nervousness
+  - Difficulty eating
+  - Shortness of breath
+  tests:
+  - Liver function tests (Liver test)
+  - Blood culture
+  - Lipid panel
+  treatments:
+  - Paliperidone (Invega)
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 24
+  condition: Eating disorder
+  gender: M
+  symptoms:
+  - Abusing alcohol
+  - Acne or pimples
+  - Antisocial behavior
+  tests:
+  - Cardiac monitoring (Cardiac monitor)
+  - Other OR therapeutic procedures on nose; mouth and pharynx
+  treatments:
+  - Ziprasidone (Geodon)
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 24
+  condition: Attention deficit hyperactivity disorder (ADHD)
+  gender: M
+  symptoms:
+  - Abnormal involuntary movements
+  - Abusing alcohol
+  tests:
+  - Blood alcohol
+  treatments:
+  - Adderall

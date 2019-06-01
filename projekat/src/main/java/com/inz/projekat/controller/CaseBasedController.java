@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inz.projekat.DTO.CaseTableDTO;
 import com.inz.projekat.DTO.PreventiveTableDTO;
+import com.inz.projekat.model.Condition;
 import com.inz.projekat.model.Patient;
 import com.inz.projekat.model.dto.CaseDescription;
 import com.inz.projekat.model.dto.PreventiveDescription;
+import com.inz.projekat.repository.ConditionRepo;
 import com.inz.projekat.repository.PatientRepo;
 import com.inz.projekat.service.CaseBasedService;
 
@@ -28,13 +30,15 @@ public class CaseBasedController {
     
     @Autowired
     private PatientRepo patientRepo;
-	
+    @Autowired
+    private ConditionRepo conditionRepo;
+    
     @RequestMapping(value = "case",method = RequestMethod.POST)
     public List<CaseTableDTO> getBestCases(@RequestParam("id") Long id, @RequestBody CaseDescription cD){
-    	//Patient p = patientRepo.findById(id).get();
+    	Patient p = patientRepo.findById(id).get();
 
-    	//cD.setAge(p.getAge());
-    	//cD.setGender(p.getGender());
+    	cD.setAge(p.getAge());
+    	cD.setGender(p.getGender());
 
     	
     	return caseBasedService.getMatches(cD);
@@ -43,8 +47,18 @@ public class CaseBasedController {
     @RequestMapping(value = "add",method = RequestMethod.POST)
     public void addEntry(@RequestParam("id") Long id, @RequestBody CaseDescription cD){
     	
+    	Patient p = patientRepo.findById(id).get();
+
+    	cD.setAge(p.getAge());
+    	cD.setGender(p.getGender());
+    	
     	try {
 			caseBasedService.addEntry(cD);
+			Condition con = new Condition(cD.getCondition());
+			conditionRepo.save(con);
+			
+			p.getConditions().add(con);
+			patientRepo.save(p);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -52,35 +66,41 @@ public class CaseBasedController {
     
     @RequestMapping(value = "preventive",method = RequestMethod.POST)
     public List<PreventiveTableDTO> getBestPreventive(@RequestParam("id") Long id, @RequestBody PreventiveDescription pD){
-    	//Patient p = patientRepo.findById(id).get();
-    	//ArrayList<String> pastC = new ArrayList<String>();
+    	Patient p = patientRepo.findById(id).get();
+    	ArrayList<String> pastC = new ArrayList<String>();
     	
-    	//for(Condition c : p.getConditions()) {
-    	//	pastC.add(c.getName());
-    	//}
+    	for(Condition c : p.getConditions()) {
+    		pastC.add(c.getName());
+    	}
     	
     	
-    	//pD.setAge(p.getAge());
-    	//pD.setGender(p.getGender());
-    	//pD.setPastConditions(pastC);
-    	
-    	pD.setAge(25);
-    	pD.setGender('M');
-    	//pD.setPastConditions(new ArrayList<String>());
+    	pD.setAge(p.getAge());
+    	pD.setGender(p.getGender());
+    	pD.setPastConditions(pastC);
+
     	
     	return caseBasedService.getPreventiveMatches(pD);
     }
     
     @RequestMapping(value = "addPreventive",method = RequestMethod.POST)
     public void addPreventive(@RequestParam("id") Long id, @RequestBody PreventiveDescription pD){
-    	pD.setAge(25);
-    	pD.setGender('M');
-    	List<String> dis = new ArrayList<String>();
-    	dis.add("Panic_disorder");
-    	pD.setPastConditions(dis);
+    	Patient p = patientRepo.findById(id).get();
+    	ArrayList<String> pastC = new ArrayList<String>();
+    	
+    	for(Condition c : p.getConditions()) {
+    		pastC.add(c.getName());
+    	}
+    	
+    	
+    	pD.setAge(p.getAge());
+    	pD.setGender(p.getGender());
+    	pD.setPastConditions(pastC);
+    	
 
+    	
     	try {
 			caseBasedService.addPreventiveEntry(pD);
+	
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

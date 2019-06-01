@@ -125,8 +125,15 @@ $(function() {
 
     });
 
+       $.get({
+        url: '/api/patient/'+id,
+        success: function (data) {
+        	setPatient(data);
+        }
+    });
 
-     $.get({
+
+    $.get({
         url: '/api/symptom',
         success: function (data) {
         	for(val in data) {
@@ -167,6 +174,8 @@ $(function() {
         	$('#risk_factor_select').fSelect();
         }
     });
+
+
 
 
 });
@@ -213,7 +222,17 @@ $(function() {
 		$('#diagnosis_grp').append(dia);
 		$('#fc_grp').append(dia1);
 	}
+	function setPatient(data) {
+		$('#name_val').text(data.name + ' ' + data.lastName);
+		$('#age_val').text(data.age);
+		$('#gender_val').text(data.gender);
 
+		for(val in data.conditions){
+			var con = $('<p> - ' + data.conditions[val].name + '</p>');
+			$('#history_val').append(con);
+		}
+
+	}
 
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),

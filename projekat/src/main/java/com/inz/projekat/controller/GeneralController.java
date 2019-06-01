@@ -51,7 +51,7 @@ public class GeneralController {
         return generalService.listAllPatients();
     }
 
-    @RequestMapping(value = "/patient/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/patient/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deletePatient(@PathVariable Long id)
     {
         if (generalService.delete(id)){
