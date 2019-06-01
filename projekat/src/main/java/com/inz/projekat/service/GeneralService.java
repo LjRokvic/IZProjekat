@@ -1,6 +1,5 @@
 package com.inz.projekat.service;
 
-
 import com.inz.projekat.model.Patient;
 import com.inz.projekat.repository.PatientRepo;
 import org.springframework.beans.factory.annotation.Autowired;

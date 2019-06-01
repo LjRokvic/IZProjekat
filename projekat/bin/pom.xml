@@ -38,16 +38,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-    		<groupId>org.yaml</groupId>
-    		<artifactId>snakeyaml</artifactId>
-    		<version>1.21</version>            
-    	</dependency>
-    	<dependency>
-    		<groupId>es.ucm.fdi.gaia</groupId>
-   			<artifactId>jCOLIBRI</artifactId>
-    		<version>3.0</version>
-		</dependency>
 	</dependencies>
 
 	<build>

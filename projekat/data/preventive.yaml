@@ -1,0 +1,35 @@
+cases:
+- !!com.inz.projekat.model.dto.PreventiveDescription
+  age: 21
+  familyHistory:
+  - Depression
+  gender: M
+  otherRiskFactors:
+  - Stress
+  pastConditions:
+  - Depression
+  - Anxiety
+  recommendedPreventiveTests:
+  - Mental_screening
+- !!com.inz.projekat.model.dto.PreventiveDescription
+  age: 25
+  familyHistory: [
+    ]
+  gender: F
+  otherRiskFactors:
+  - Stress
+  pastConditions:
+  - Anxiety
+  recommendedPreventiveTests:
+  - Anxiety_test
+- !!com.inz.projekat.model.dto.PreventiveDescription
+  age: 27
+  familyHistory:
+  - Depression
+  gender: M
+  otherRiskFactors:
+  - Stress
+  pastConditions:
+  - Anxiety
+  recommendedPreventiveTests:
+  - Mental_screening
