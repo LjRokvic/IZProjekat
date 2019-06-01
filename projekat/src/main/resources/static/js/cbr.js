@@ -72,7 +72,7 @@ $(function() {
 
 
      $.get({
-        url: '/api/symptoms',
+        url: '/api/symptom',
         success: function (data) {
         	for(val in data) {
         		addSymptoms(data[val]);
@@ -80,7 +80,7 @@ $(function() {
         }
     });
 	 $.get({
-        url: '/api/tests',
+        url: '/api/test',
         success: function (data) {
         	for(val in data) {
         		addTests(data[val]);
@@ -89,7 +89,7 @@ $(function() {
     });
 
      $.get({
-        url: '/api/treatments',
+        url: '/api/treatment',
         success: function (data) {
         	for(val in data) {
         		addTreatments(data[val]);
@@ -98,7 +98,7 @@ $(function() {
     });
 
      $.get({
-        url: '/api/coditions',
+        url: '/api/condition',
         success: function (data) {
         	for(val in data) {
         		addDiagnosi(data[val]);
