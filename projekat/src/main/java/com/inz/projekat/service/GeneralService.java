@@ -100,6 +100,28 @@ public class GeneralService {
         return condList;
     }
 
+    @SuppressWarnings("Duplicates")
+    public List<String> getAllTreatments(){
+        JIPEngine engine = new JIPEngine();
+
+        engine.consultFile("corpus.pl");
+        JIPQuery query = engine.openSynchronousQuery("treatment(X)");
+
+        List<String> condList = new ArrayList<>();
+        JIPTerm solution;
+        while ( (solution = query.nextSolution()) != null) {
+            //System.out.println("solution: " + solution);
+            for (JIPVariable var: solution.getVariables()) {
+                if (var.getName().equalsIgnoreCase("X")){
+                    condList.add(getCorrect(var.getValue().toString()));
+                }
+            }
+        }
+
+        return condList;
+    }
+
+
     public Patient addPatient(Patient insert){
 
         Patient a = new Patient();

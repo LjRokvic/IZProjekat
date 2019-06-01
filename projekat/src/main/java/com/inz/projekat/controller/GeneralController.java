@@ -50,5 +50,9 @@ public class GeneralController {
         return generalService.listAllPatients();
     }
 
+    @RequestMapping(value = "/treatment", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<String> getAllTreatments(){
+        return generalService.getAllTreatments();
+    }
 
 }
