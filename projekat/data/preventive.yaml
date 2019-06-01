@@ -33,3 +33,18 @@ cases:
   - Anxiety
   recommendedPreventiveTests:
   - Mental_screening
+- !!com.inz.projekat.model.dto.PreventiveDescription
+  age: 25
+  familyHistory:
+  - Panic disorder
+  - Eating disorder
+  gender: M
+  otherRiskFactors:
+  - Stress
+  - Lonliness
+  pastConditions:
+  - Panic_disorder
+  recommendedPreventiveTests:
+  - Cardiac monitoring (Cardiac monitor)
+  - Mental health counseling
+  - Lipid panel

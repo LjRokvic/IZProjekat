@@ -56,7 +56,7 @@
         <div class="col-sm-9">
             <ul class="nav nav-tabs">
                 <li class="active" id="cbrPage" ><a data-toggle="tab" href="#cbr">Case Based Diagnosis</a></li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-
+                <li id="cbr_preventive_Page" ><a data-toggle="tab" href="#cbr_preventive">Case Based Preventive Tests</a></li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <li id="rulePage" ><a data-toggle="tab" href="#rules">Rule Based Diagnosis</a></li>&nbsp;&nbsp;&nbsp;
             </ul>
 
@@ -71,10 +71,6 @@
                     <br>
                      <select id="symptoms_select" multiple="multiple">
                         <optgroup id="symptoms_grp" label="Symptoms: ">
-                            <option value="Anxiety_and_nervousness">Anxiety_and_nervousness</option>
-                            <option value="Depression">Depression</option>
-                            <option value="Shortness_of_breath">Shortness_of_breath</option>
-                            <option value="Depressive_or_psychotic_symptoms">Depressive_or_psychotic_symptoms</option>
                         </optgroup>
                     </select>
 
@@ -143,6 +139,84 @@
 
 
                 </div><!--/tab-pane-->
+                <div class="tab-pane" id="cbr_preventive">
+
+                        <h2>Case Based Preventive Tests</h2>
+                        <br>
+                        <b style="font-size: 24px">Family history: </b>
+                        <br>
+                        <br>
+                         <select id="family_conditions_select" multiple="multiple">
+                            <optgroup id="fc_grp" label="Conditions: ">
+                            </optgroup>
+                        </select>
+                        <br>
+                        <br>
+                        <b style="font-size: 24px">Other risk factors: </b>
+                        <br>
+                        <br>
+                         <select id="risk_factor_select" multiple="multiple">
+                            <optgroup id="rf_grp" label="Conditions: ">
+                                <option value="Stress">Stress</option>
+                                <option value="Substace use">Substance use</option>
+                                <option value="Lonliness">Lonliness</option>
+                                <option value="Poverty">Poverty</option>
+                                <option value="Neglect">Neglect</option>
+                                <option value="Exposure to violence">Exposure to violence</option>
+                                <option value="Abuse">Abuse</option>
+                                <option value="Poor nutrition">Poor nutrition</option>
+                                <option value="Smoking">Smoking</option>
+                            </optgroup>
+                        </select>
+
+                            <button id="preventive_eval_btn" type="button" class="btn btn-success" style ="margin-bottom: 30px; margin-left: 15px">Evaluate</button>
+
+
+                        <br>
+                        <br>
+
+                        <b style="font-size: 24px">Results: </b>
+                        <br>
+                        <br>
+                     <table id="cbrPreventiveTable" class="display responsive dataTable dtr-inline collapsed table table-striped table-hover table-bordered" role="grid" style="width: 100%;">
+                            <thead>
+                            <tr>
+                                <th>Number: </th>
+                                <th>Similarity (%): </th>
+                                <th>Recommended Preventive Tests: </th>
+                            </tr>
+                            </thead>
+                            <tbody id="cbrPreventiveTable">
+                            </tbody>
+                        </table>
+
+                        <br>
+                        <br>
+
+                        <hr>
+                        <hr>  
+
+                        <br>
+                        <br>
+                        <b style="font-size: 24px">Recommended Preventive Tests: </b>
+                        <br>
+                        <br>
+                         <select id="preventive_tests_select" multiple="multiple">
+                            <optgroup id="pt_grp" label="Conditions: ">
+                            </optgroup>
+                        </select>
+
+                            <button id="preventive_add_btn" type="button" class="btn btn-success" style ="margin-bottom: 30px; margin-left: 15px">Confirm Diagnosis</button>
+
+
+                        <br>
+                        <br>
+                    <hr>  
+
+
+                </div><!--/tab-pane-->
+
+
                 <div class="tab-pane" id="rules">
                     <h2>Friend Requests</h2>
                     <table id="requestsTable" class="display responsive dataTable dtr-inline collapsed table table-striped table-hover table-bordered" role="grid" style="width: 100%;">

@@ -31,6 +31,14 @@ public class PreventiveDescription implements CaseComponent {
 				+ ", familyHistory=" + familyHistory + ", otherRiskFactors=" + otherRiskFactors
 				+ ", recommendedPreventiveTests=" + recommendedPreventiveTests + "]";
 	}
+	
+	
+
+
+
+	public PreventiveDescription() {
+		super();
+	}
 
 
 

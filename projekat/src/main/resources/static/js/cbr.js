@@ -9,10 +9,10 @@ $(function() {
         var syms = $('select#symptoms_select').val();
 
         $.ajax({
-            url: "/cbr/evaluate/case",
+            url: "/cbr/evaluate/case?id="+id,
             type: 'POST',
             data: JSON.stringify({
-                age: 10,
+            	age: 25,
                 gender: 'M',
                 symptoms: syms
             }),
@@ -22,6 +22,38 @@ $(function() {
             	table.clear();
             	for(val in data) {
             		fillResults(table,data[val]);
+            	}
+
+            },
+            error: function (data) {
+
+            },
+        });
+
+    });
+
+ $('#preventive_eval_btn').on('click', function(event) {
+        event.preventDefault();
+
+        var history = $('select#family_conditions_select').val();
+        var riskFactor = $('select#risk_factor_select').val();
+
+        $.ajax({
+            url: "/cbr/evaluate/preventive?id="+id,
+            type: 'POST',
+            data: JSON.stringify({
+            	age: 10,
+                gender: 'M',
+                pastConditions: [],
+                familyHistory: history,
+                otherRiskFactors: riskFactor
+            }),
+            contentType: 'application/json',
+            success: function (data) {
+            	var ptable = $('#cbrPreventiveTable').DataTable();
+            	ptable.clear();
+            	for(val in data) {
+            		fillResultsPreventive(ptable,data[val]);
             	}
 
             },
@@ -64,6 +96,34 @@ $(function() {
 
     });
 
+  $('#preventive_add_btn').on('click', function(event) {
+        event.preventDefault();
+
+        var fc = $('select#family_conditions_select').val();
+        var rf = $('select#risk_factor_select').val();
+        var tst = $('select#preventive_tests_select').val();
+
+        $.ajax({
+            url: "/cbr/evaluate/addPreventive?id="+id,
+            type: 'POST',
+            data: JSON.stringify({
+            	age: 15,
+            	gender: 'M',
+                familyHistory: fc,
+                otherRiskFactors: rf,
+                recommendedPreventiveTests: tst
+
+            }),
+            contentType: 'application/json',
+            success: function (data) {
+				location.reload();
+            },
+            error: function (data) {
+
+            },
+        });
+
+    });
 
 
      $.get({
@@ -83,6 +143,7 @@ $(function() {
         		addTests(data[val]);
         	}
         $('#tests_select').fSelect();
+        $('#preventive_tests_select').fSelect();
         }
     });
 	sleep(150);
@@ -102,6 +163,8 @@ $(function() {
         	for(val in data) {
         		addDiagnosi(data[val]);
         	}
+        	$('#family_conditions_select').fSelect();
+        	$('#risk_factor_select').fSelect();
         }
     });
 
@@ -120,13 +183,25 @@ $(function() {
 	    table.row.add(tr).draw();
 	}
 
+	function fillResultsPreventive(table, data) {
+
+	    var tr = $('<tr></tr>');
+	    var num = $('<td>' + data.number + '</td>');
+	    var sim = $('<td>' + data.similarity + '</td>');
+	    var tst = $('<td>' + data.preventiveTests + '</td>');
+	    tr.append(num).append(sim).append(tst);
+	    table.row.add(tr).draw();
+	}
+
 	function addSymptoms(data) {
 	    var sym = $('<option value="' + data + '">' + data + '</option>');
 		$('#symptoms_grp').append(sym);
 	}
 	function addTests(data) {
 	    var tes = $('<option value="' + data + '">' + data + '</option>');
+	    var tes1 = $('<option value="' + data + '">' + data + '</option>');
 		$('#tests_grp').append(tes);
+		$('#pt_grp').append(tes1);
 	}
 	function addTreatments(data) {
 	    var tre = $('<option value="' + data + '">' + data + '</option>');
@@ -134,7 +209,9 @@ $(function() {
 	}
 	function addDiagnosi(data) {
 	    var dia = $('<option value="' + data + '">' + data + '</option>');
+	    var dia1 = $('<option value="' + data + '">' + data + '</option>');
 		$('#diagnosis_grp').append(dia);
+		$('#fc_grp').append(dia1);
 	}
 
 

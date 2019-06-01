@@ -1,8 +1,14 @@
 package com.inz.projekat.model;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Patient {
@@ -15,6 +21,8 @@ public class Patient {
     private String name;
 
     private String lastName;
+    
+    private char gender;
 
     private boolean isMale;
 
@@ -27,15 +35,24 @@ public class Patient {
 
     }
 
-    public Patient(String name, String lastName, boolean isMale, int age) {
+    public Patient(String name, String lastName, boolean isMale, int age, char gender) {
         this.name = name;
         this.lastName = lastName;
         this.isMale = isMale;
         this.conditions = new ArrayList<>();
         this.age = age;
+        this.gender = gender;
     }
 
-    public Long getId() {
+    public char getGender() {
+		return gender;
+	}
+
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
+	public Long getId() {
         return id;
     }
 

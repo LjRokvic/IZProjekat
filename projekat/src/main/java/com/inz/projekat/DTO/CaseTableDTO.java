@@ -1,4 +1,4 @@
-package com.inz.projekat.model.dto;
+package com.inz.projekat.DTO;
 
 import java.util.ArrayList;
 import java.util.List;
