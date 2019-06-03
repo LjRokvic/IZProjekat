@@ -121,3 +121,23 @@ cases:
   - Blood alcohol
   treatments:
   - Adderall
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 24
+  condition: Schizophrenia
+  gender: M
+  symptoms:
+  - Abnormal involuntary movements
+  tests:
+  - Diagnostic spinal tap (Spinal tap)
+  treatments:
+  - Chlorpromazine (Thorazine)
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 24
+  condition: Schizophrenia
+  gender: M
+  symptoms:
+  - Abnormal involuntary movements
+  tests:
+  - Psychotherapy
+  treatments:
+  - Adderall

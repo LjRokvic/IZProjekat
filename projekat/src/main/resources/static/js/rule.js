@@ -18,7 +18,7 @@ $(function () {
                 var table = $('#ruleResultTable').DataTable();
                 table.clear();
                 for(val in data) {
-                    fillResults(table,data[val]);
+                    fillResultsRule(table,data[val]);
                 }
 
             },
@@ -136,7 +136,7 @@ function displayTest(event) {
 
 var iter = 0;
 
-function fillResults(table, data) {
+function fillResultsRule(table, data) {
 
 
     var tr = $('<tr></tr>');
