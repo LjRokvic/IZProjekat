@@ -54,11 +54,18 @@ public class CaseBasedController {
     	
     	try {
 			caseBasedService.addEntry(cD);
-			Condition con = new Condition(cD.getCondition());
-			conditionRepo.save(con);
-			
-			p.getConditions().add(con);
-			patientRepo.save(p);
+
+    		Condition con = conditionRepo.findByName(cD.getCondition());
+    		
+    		if(con == null) {
+    			con = new Condition(cD.getCondition());
+    			conditionRepo.save(con);
+    		}
+    		
+    		if(!p.getConditions().contains(con)) {
+    			p.getConditions().add(con);
+    			patientRepo.save(p);
+    		}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
