@@ -1,39 +1,5 @@
 cases:
 - !!com.inz.projekat.model.dto.PreventiveDescription
-  age: 21
-  familyHistory:
-  - Depression
-  gender: M
-  otherRiskFactors:
-  - Stress
-  pastConditions:
-  - Depression
-  - Anxiety
-  recommendedPreventiveTests:
-  - Mental_screening
-- !!com.inz.projekat.model.dto.PreventiveDescription
-  age: 25
-  familyHistory: [
-    ]
-  gender: F
-  otherRiskFactors:
-  - Stress
-  pastConditions:
-  - Anxiety
-  recommendedPreventiveTests:
-  - Anxiety_test
-- !!com.inz.projekat.model.dto.PreventiveDescription
-  age: 27
-  familyHistory:
-  - Depression
-  gender: M
-  otherRiskFactors:
-  - Stress
-  pastConditions:
-  - Anxiety
-  recommendedPreventiveTests:
-  - Mental_screening
-- !!com.inz.projekat.model.dto.PreventiveDescription
   age: 25
   familyHistory:
   - Panic disorder
@@ -43,8 +9,33 @@ cases:
   - Stress
   - Lonliness
   pastConditions:
-  - Panic_disorder
+  - Panic disorder
   recommendedPreventiveTests:
   - Cardiac monitoring (Cardiac monitor)
   - Mental health counseling
   - Lipid panel
+- !!com.inz.projekat.model.dto.PreventiveDescription
+  age: 26
+  familyHistory:
+  - Obsessive compulsive disorder (OCD)
+  gender: F
+  otherRiskFactors:
+  - Stress
+  pastConditions:
+  - Panic disorder
+  - Obsessive compulsive disorder (OCD)
+  recommendedPreventiveTests:
+  - Psychotherapy
+- !!com.inz.projekat.model.dto.PreventiveDescription
+  age: 26
+  familyHistory:
+  - Obsessive compulsive disorder (OCD)
+  gender: F
+  otherRiskFactors:
+  - Stress
+  pastConditions:
+  - Panic disorder
+  - Obsessive compulsive disorder (OCD)
+  recommendedPreventiveTests:
+  - Psychological and psychiatric evaluation and therapy
+  - Psychotherapy
