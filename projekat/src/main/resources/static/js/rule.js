@@ -47,7 +47,7 @@ $(function () {
                    if (t1 > 0)
                        $('#addPreventList').html('');
                     for (el in data1){
-                        $('#addPreventList').append('<li>'+ data[el] +'</li>');
+                        $('#addPreventList').append('<li>'+ data1[el] +'</li>');
                     }
 
 
