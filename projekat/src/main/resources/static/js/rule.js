@@ -115,6 +115,23 @@ function displayTreatment(event) {
 
 }
 
+
+function displayDecList(event) {
+    var cond = localStorage.getItem(event);
+    $.get({
+        url:'/api/treatment/' + cond,
+        success:function (data) {
+            $('#addListDec').html('');
+            for( el in data){
+                $('#addListDec').append('<li>'+ data[el] +'</li>')
+            }
+            $('#hiddenList').fadeIn(250);
+        }
+    });
+
+}
+
+
 function displayTest(event) {
     var cond = localStorage.getItem(event);
     $.get({
@@ -137,16 +154,18 @@ function displayTest(event) {
 var iter = 0;
 
 function fillResults(table, data) {
-
+  
 
     var tr = $('<tr></tr>');
     //var num = $('<td>' + num + '</td>');
-    var prob = $('<td>' + data.prob + '</td>');
+    var prob = $('<td>' + Math.round((data.prob *100)*100)/100+ '</td>');
     var numSim = $('<td>' + data.num + '</td>');
     var con = $('<td>' + data.condition + '</td>');
     var btnTest = $('<td><button id="'+iter+'RAN" onclick="displayTest(this.id)" type="button" class="btn btn-primary" >' + 'Test' + '</button></td>');
     var btnTreat = $('<td><button id="'+iter+'RAN" onclick="displayTreatment(this.id)" type="button" class="btn btn-primary">' + 'Treatments' + '</button></td>');
-    tr.append(con).append(prob).append(numSim).append(btnTest).append(btnTreat);
+    //var decList = $('<td><button id="'+iter+'RAN" onclick="displayDecList(this.id)" type="button" class="btn btn-primary">' + 'Treatments' + '</button></td>');
+    var decList = $('<td>' + data.decision + '</td>');
+    tr.append(con).append(prob).append(numSim).append(btnTest).append(btnTreat).append(decList);
     table.row.add(tr).draw();
     iter++;
     localStorage.setItem(iter+"RAN", data.condition);

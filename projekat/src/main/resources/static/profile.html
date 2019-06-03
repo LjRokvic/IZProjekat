@@ -64,7 +64,7 @@
         </div><!--/col-3-->
         <div class="col-sm-9">
             <ul class="nav nav-tabs">
-                <li class="active" id="patientsPage" ><a data-toggle="tab" href="#patients">Patients</a></li>&nbsp;&nbsp;&nbsp;
+                <li class="active" id="patientsPage" ><a data-toggle="tab" href="#patients">Patients</a></li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <li  id="cbrPage" ><a data-toggle="tab" href="#cbr">Case Based Diagnosis</a></li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <li id="cbr_preventive_Page" ><a data-toggle="tab" href="#cbr_preventive">Case Based Preventive Tests</a></li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                 <li id="rulePage" ><a data-toggle="tab" href="#rules">Rule Based Diagnosis</a></li>&nbsp;&nbsp;&nbsp;
@@ -228,7 +228,7 @@
 
                 <!--Rule Based Begin-->
                 <div class="tab-pane" id="rules">
-                    <h2>Case Based Diagnosis</h2>
+                    <h2>Rule Based Diagnosis</h2>
                     <br>
                     <b style="font-size: 24px">Symptoms: </b>
                     <br>
@@ -256,12 +256,13 @@
                             <th>Symptoms match (X/12): </th>
                             <th>Tests: </th>
                             <th>Treatments: </th>
+                            <th>Made with: </th>
                         </tr>
                         </thead>
                         <tbody id="ruleResultTableBody">
                         </tbody>
                     </table>
-                    <button id="evaluate_btn_rule_history" type="button" class="btn btn-success" style ="margin-bottom: 30px; margin-left: 15px">Evaluate with History</button>
+                    <!--<button id="evaluate_btn_rule_history" type="button" class="btn btn-success" style ="margin-bottom: 30px; margin-left: 15px">Evaluate with History</button>-->
                     <div id="hiddenList">
                     <br>
                     <br>
@@ -277,6 +278,13 @@
                     <ol id="addListTreatment">
 
                     </ol>
+
+                    <!--<hr>-->
+
+                    <!--<b style="font-size: 24px">Decision made with: </b>-->
+                    <!--<ol id="addListDec">-->
+
+                    <!--</ol>    -->
                     </div>
 
                     <hr>
