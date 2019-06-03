@@ -5,10 +5,7 @@ import com.inz.projekat.service.GeneralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
 import java.lang.reflect.Method;
@@ -36,8 +33,8 @@ public class GeneralController {
         return generalService.getAllTests();
     }
 
-    @RequestMapping(value = "/patient", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public Patient addPatient(Patient patient){
+    @RequestMapping(value = "/patient", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public Patient addPatient(@RequestBody Patient patient){
         return generalService.addPatient(patient);
     }
 
@@ -61,8 +58,8 @@ public class GeneralController {
         }
     }
 
-    @RequestMapping(value = "/patient", method = RequestMethod.PUT)
-    public Patient updatePatient(@PathVariable Patient patient){
+    @RequestMapping(value = "/patient", method = RequestMethod.PUT, consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    public Patient updatePatient(@RequestBody Patient patient){
         return generalService.update(patient);
     }
 

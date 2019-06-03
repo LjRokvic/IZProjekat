@@ -1,6 +1,8 @@
 package com.inz.projekat.service;
 
+import com.inz.projekat.model.Condition;
 import com.inz.projekat.model.Patient;
+import com.inz.projekat.repository.ConditionRepo;
 import com.inz.projekat.repository.PatientRepo;
 import com.inz.projekat.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class GeneralService {
     private PatientRepo patientRepo;
 
     @Autowired
+    private ConditionRepo conditionRepo;
+
+    @Autowired
     private Utils utils;
 
     public GeneralService() {
@@ -49,18 +54,7 @@ public class GeneralService {
        return  false;
     }
 
-    public Patient update(Patient forUpdate){
 
-        Patient p = patientRepo.findFirstById(forUpdate.getId());
-
-        p.setLastName(forUpdate.getLastName());
-        p.setName(forUpdate.getName());
-        p.setAge(forUpdate.getAge());
-        p.setConditions(forUpdate.getConditions());
-        p.setGender(forUpdate.getGender());
-
-        return p;
-    }
 
 
 
@@ -152,18 +146,68 @@ public class GeneralService {
         return condList;
     }
 
-
+    @SuppressWarnings("Duplicates")
     public Patient addPatient(Patient insert){
 
         Patient a = new Patient();
         a.setAge(insert.getAge());
-        a.setConditions(insert.getConditions());
+
+        List<Condition> list = a.getConditions();
+
+
+        for(Condition c : insert.getConditions()){
+            Condition q = conditionRepo.findByName(c.getName());
+            if (q == null){
+                Condition n = new Condition();
+                n.setName(c.getName());
+                conditionRepo.save(n);
+                list.add(n);
+            }
+            else
+                list.add(q);
+        }
+
         a.setName(insert.getName());
         a.setLastName(insert.getLastName());
         a.setGender(insert.getGender());
         patientRepo.save(a);
         return a;
     }
+
+    @SuppressWarnings("Duplicates")
+    public Patient update(Patient forUpdate){
+
+        Patient p = patientRepo.findFirstById(forUpdate.getId());
+
+        if (p != null){
+            p.setLastName(forUpdate.getLastName());
+            p.setName(forUpdate.getName());
+            p.setAge(forUpdate.getAge());
+            p.setGender(forUpdate.getGender());
+            p.setConditions(null);
+            List<Condition> list = new ArrayList<>();
+
+            for(Condition c : forUpdate.getConditions()){
+                Condition q = conditionRepo.findByName(c.getName());
+                if (q == null){
+                    Condition n = new Condition();
+                    n.setName(c.getName());
+                    conditionRepo.save(n);
+                    list.add(n);
+                }
+                else
+                    list.add(q);
+            }
+
+            p.setConditions(list);
+            p.setGender(forUpdate.getGender());
+            patientRepo.save(p);
+        }
+
+
+        return p;
+    }
+
 
     public List<Patient> listAllPatients(){
         return patientRepo.findAll();

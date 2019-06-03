@@ -47,13 +47,13 @@ public class RuleBasedController {
         return ruleBasedService.getBestPerc(data.getConditions(),data.getSymptoms());
     }
 
-    @RequestMapping(value = "/all", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
+    @RequestMapping(value = "/all", method = RequestMethod.POST ,consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<ResponseDTO> getAll(@RequestBody List<String> symptoms){
         return ruleBasedService.getAll(symptoms);
     }
 
-    @RequestMapping(value = "/all", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<String> getPreventive(Integer age, Boolean isMale, Boolean previousIll){
+    @RequestMapping(value = "/allPreventive/{age}/{isMale}/{previousIll}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<String> getPreventive(@PathVariable Integer age,@PathVariable Boolean isMale,@PathVariable Boolean previousIll){
         return ruleBasedService.getPreventionTests(age,isMale,previousIll);
     }
 

@@ -512,6 +512,7 @@ forall(number_of_symptoms(LS,_,NumC1,_,_), NumC >= NumC1), !.
 best_by_percentage(LS, Con, Perc, DecList):- number_of_symptoms(LS,Con,Perc,_, DecList),
 forall(number_of_symptoms(LS,_,Perc1,_,_), Perc>= Perc1), !.
 
+
 /* Usage: diagnose_number(List_of_Conditions, List_of_Symptoms, Condition, Number,DecisionList)*/
 
 diagnose_number([],LS,Con, Num, DecList):- best_by_number(LS, Con, Num, DecList).
@@ -520,7 +521,7 @@ diagnose_number([LLC|LC],LS, Con, Num, DecList):- \+ condition(LLC, [A,B,C|Rest]
 
 /* Usage: diagnose_perc(List_of_Conditions, List_of_Symptoms, Condition, Percetage, DecisionList)*/
 
-diagnose_perc([],LS,Con,Per, DecList):- best_by_percentage(LS,Con, Per, DecList).
+diagnose_perc([],LSS,Con,Per, DecList):- best_by_percentage(LSS,Con, Per, DecList).
 diagnose_perc([LLC|LC],LSS, Con, Per, DecList):- condition(LLC, [A,B,C|R]), diagnose_perc(LC,[A,B,C|LSS], Con, Per, DecList).  
 diagnose_perc([LLC|LC],LSS, Con, Per, DecList):- \+ condition(LLC, [A,B,C|R]), diagnose_perc(LC,LSS, Con, Per, DecList).  
 
@@ -528,3 +529,12 @@ diagnose_perc([LLC|LC],LSS, Con, Per, DecList):- \+ condition(LLC, [A,B,C|R]), d
 /* Example
 diagnose_perc(['Panic_disorder'], ['Temper_problems','Drug_abuse'], Con, Perc, DecList).
 */
+
+/* Age of patient, sex of patient (true - male), PC - true if any previous, Rec recommended test
+preventive(Age,Sex,PreviousConditions,Rec) */
+
+preventive(Age,Sex,true,'Mental health counseling'):- Age > 18.
+preventive(Age,false,PC, 'Toxicology screen'):- Age >18. 
+preventive(Age,false,PC, 'Depression screen (Depression screening)'):- Age >18.
+preventive(Age,Sex, true, 'Psychotherapy'):- Age < 18.
+preventive(Age,Sex, PC, 'Psychological and psychiatric evaluation and therapy'):- Age < 18.

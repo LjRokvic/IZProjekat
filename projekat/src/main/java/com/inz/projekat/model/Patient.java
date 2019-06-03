@@ -1,17 +1,13 @@
 package com.inz.projekat.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
-public class Patient {
+public class Patient implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +20,8 @@ public class Patient {
     
     private char gender;
 
-
-
-   @OneToMany(targetEntity = Condition.class, fetch = FetchType.EAGER)
-    private List<Condition> conditions;
+   @ManyToMany(targetEntity = Condition.class, fetch = FetchType.EAGER)
+    private List<Condition> conditions = new ArrayList<>();
 
     private int age;
 

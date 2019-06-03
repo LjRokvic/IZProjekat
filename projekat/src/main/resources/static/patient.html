@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/NavigationWithButton.css">
+    <link rel="stylesheet" href="css/HighlightPhone.css">
+
+    <link rel="stylesheet" href="css/NewSquare.css" >
+    <script type="text/javascript" src="js/fSelect.js"></script>
+    <link href="css/fSelect.css" rel="stylesheet">
+    <script src="js/editPatient.js"></script>
+    <title>eJourney</title>
+
+
+</head>
+
+<body>
+
+
+<div class="container">
+    <div class="col-md-12" style="align-self: center">
+        <form id="addForm" method="post">
+            <h2 class="sr-only "></h2>
+            <h2 style="text-align: center">Patient</h2>
+            <img src="patient.svg"
+                 style="display: block; max-height:240px; max-width: 240px;margin-left: auto;margin-right: auto">
+            <div class="form-group" id="hideThis" hidden>
+                <input class="form-control" type="text" name="id">
+            </div>
+            <div class="form-group" ><input class="form-control" type="text" name="name" required placeholder="Name of patient"></div>
+            <div class="form-group" ><input class="form-control" type="text" name="lastName" required placeholder="Last name of patient"></div>
+
+            <div class="form-group" ><input class="form-control" type="text" name="gender" required placeholder="m/f"></div>
+
+            <div class="form-group" ><input class="form-control" type="text" name="age" required placeholder="Age of patient"></div>
+
+
+            <br>
+            <div class="form-group" style="width: 450px;">
+                <b style="font-size: 24px">Conditions: </b>
+                <select id="condition_select" multiple="multiple" style=" width: 250px; height:35px">
+                    <optgroup id="condition_grp" label="Condition: ">
+
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" id="submitButton" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

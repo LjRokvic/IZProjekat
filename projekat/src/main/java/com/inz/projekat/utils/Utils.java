@@ -12,7 +12,7 @@ import org.springframework.transaction.event.TransactionalEventListener;
 @Component
 public class Utils {
 
-    private static JIPEngine jipEngine;
+    private static JIPEngine jipEngine = new JIPEngine();
 
     private static boolean consulted = false;
 

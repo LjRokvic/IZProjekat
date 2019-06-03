@@ -27,7 +27,7 @@ $(function() {
             },
             error: function (data) {
 
-            },
+            }
         });
 
     });
@@ -133,52 +133,114 @@ $(function() {
     });
 
 
-    $.get({
-        url: '/api/symptom',
-        success: function (data) {
-        	for(val in data) {
-        		addSymptoms(data[val]);
-        	}
-        	$('#symptoms_select').fSelect();
-        }
-    });
-    sleep(150);
-	 $.get({
-        url: '/api/test',
-        success: function (data) {
-        	for(val in data) {
-        		addTests(data[val]);
-        	}
-        $('#tests_select').fSelect();
-        $('#preventive_tests_select').fSelect();
-        }
-    });
-	sleep(150);
-     $.get({
-        url: '/api/treatment',
-        success: function (data) {
-        	for(val in data) {
-        		addTreatments(data[val]);
-        	}
-           $('#treatments_select').fSelect();
-        }
-    });
-	sleep(150);
-     $.get({
-        url: '/api/condition',
-        success: function (data) {
-        	for(val in data) {
-        		addDiagnosi(data[val]);
-        	}
-        	$('#family_conditions_select').fSelect();
-        	$('#risk_factor_select').fSelect();
-        }
-    });
+    setTimeout(function(){
+        requestSymptom();
+    }, 150);
+
+
+
+    setTimeout(function(){
+        requestTest();
+    }, 150);
+
+    setTimeout(function(){
+        requestTreatment();
+    }, 300);
+
+    setTimeout(function(){
+        requestDiagnosi();
+    }, 450);
+
 
 
 
 
 });
+    function requestSymptom(){
+        $.get({
+            url: '/api/symptom',
+            success: function (data) {
+                var a = 0;
+                for(val in data) {
+                    addSymptoms(data[val]);
+                    a++;
+                }
+                if (a === 0)
+                    setTimeout(function(){
+                        requestSymptom();
+                    }, 50);
+                else {
+                    $('#symptoms_select').fSelect();
+                    $('#symptoms_select_rule').fSelect();
+                }
+            }
+        });
+    }
+
+    function requestTest() {
+
+        $.get({
+            url: '/api/test',
+            success: function (data) {
+                var a = 0;
+                for(val in data) {
+                    addTests(data[val]);
+                    a++;
+                }
+                if (a === 0){
+                    setTimeout(function(){
+                        requestTest();
+                    }, 50);
+
+                }else {
+                    $('#tests_select').fSelect();
+                    $('#preventive_tests_select').fSelect();
+                }
+
+            }
+        });
+    }
+    function requestTreatment() {
+        $.get({
+            url: '/api/treatment',
+            success: function (data) {
+                var a = 0;
+                for(val in data) {
+                    addTreatments(data[val]);
+                    a++;
+                }
+                if (a === 0){
+                    setTimeout(function(){
+                        requestTreatment();
+                    }, 50);
+                }else {
+                    $('#treatments_select').fSelect();
+                }
+            }
+        })
+    }
+
+    function requestDiagnosi() {
+        $.get({
+            url: '/api/condition',
+            success: function (data) {
+                var a = 0;
+
+                for(val in data) {
+                    addDiagnosi(data[val]);
+                    a++;
+                }
+                if (a=== 0){
+                    setTimeout(function(){
+                        requestDiagnosi()
+                    }, 50);
+                }else {
+                    $('#family_conditions_select').fSelect();
+                    $('#risk_factor_select').fSelect();
+                }
+            }
+        });
+    }
 
 	function fillResults(table, data) {
 
@@ -204,7 +266,9 @@ $(function() {
 
 	function addSymptoms(data) {
 	    var sym = $('<option value="' + data + '">' + data + '</option>');
-		$('#symptoms_grp').append(sym);
+        var sym1 = $('<option value="' + data + '">' + data + '</option>');
+        $('#symptoms_grp').append(sym);
+        $('#symptoms_grp_rule').append(sym1);
 	}
 	function addTests(data) {
 	    var tes = $('<option value="' + data + '">' + data + '</option>');
