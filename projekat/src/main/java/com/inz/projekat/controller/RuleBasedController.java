@@ -57,4 +57,6 @@ public class RuleBasedController {
         return ruleBasedService.getPreventionTests(age,isMale,previousIll);
     }
 
+
+
 }
