@@ -1,57 +1,6 @@
 cases:
 - !!com.inz.projekat.model.dto.CaseDescription
-  age: 21
-  condition: Panic_disorder
-  gender: M
-  symptoms:
-  - Anxiety_and_nervousness
-  - Depression
-  tests:
-  - Test3
-  - Test2
-  treatments:
-  - Lorazepam
-- !!com.inz.projekat.model.dto.CaseDescription
-  age: 21
-  condition: Panic_disorder
-  gender: M
-  symptoms:
-  - Headache
-  - Depression
-  tests:
-  - Test4
-  - Test5
-  treatments:
-  - Alprazolam_(Xanax)
-- !!com.inz.projekat.model.dto.CaseDescription
-  age: 25
-  condition: Panic_disorder
-  gender: M
-  symptoms:
-  - Headache
-  - Depression
-  tests:
-  - Test2
-  treatments:
-  - Lorazepam
-  - Alprazolam_(Xanax)
-- !!com.inz.projekat.model.dto.CaseDescription
-  age: 10
-  condition: Panic disorder
-  gender: M
-  symptoms:
-  - Anxiety_and_nervousness
-  - Depression
-  - Shortness_of_breath
-  - Depressive_or_psychotic_symptoms
-  - Depression
-  tests:
-  - Psychotherapy
-  treatments:
-  - Lorazepam
-  - Alprazolam (Xanax)
-- !!com.inz.projekat.model.dto.CaseDescription
-  age: 10
+  age: 43
   condition: Anxiety
   gender: M
   symptoms:
@@ -62,9 +11,9 @@ cases:
   treatments:
   - Trazodone
 - !!com.inz.projekat.model.dto.CaseDescription
-  age: 24
+  age: 27
   condition: Anxiety
-  gender: M
+  gender: F
   symptoms:
   - Depression
   tests:
@@ -141,3 +90,40 @@ cases:
   - Psychotherapy
   treatments:
   - Adderall
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 26
+  condition: Panic disorder
+  gender: F
+  symptoms:
+  - Anxiety and nervousness
+  - Depression
+  - Depressive or psychotic symptoms
+  - Dizziness
+  - Sharp chest pain
+  - Shortness of breath
+  tests:
+  - Mental health counseling
+  - Psychotherapy
+  - Electrocardiogram
+  treatments:
+  - Lorazepam
+  - Clonazepam
+  - Alprazolam (Xanax)
+- !!com.inz.projekat.model.dto.CaseDescription
+  age: 26
+  condition: Obsessive compulsive disorder (OCD)
+  gender: F
+  symptoms:
+  - Anxiety and nervousness
+  - Depression
+  - Depressive or psychotic symptoms
+  - Hostile behavior
+  - Obsessions and compulsions
+  - Temper problems
+  tests:
+  - Electroencephalogram (EEG) (Eeg)
+  - Depression screen (Depression screening)
+  - Psychotherapy
+  treatments:
+  - Sertraline (Zoloft)
+  - Fluoxetine (Prozac)
