@@ -8,3 +8,4 @@ http://www.symcat.com/conditions/post-traumatic-stress-disorder-ptsd
 http://www.symcat.com/conditions/dysthymic-disorder
 http://www.symcat.com/conditions/anxiety
 http://www.symcat.com/conditions/schizophrenia
+http://www.symcat.com/conditions/social-phobia

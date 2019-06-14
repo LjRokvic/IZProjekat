@@ -1,15 +1,28 @@
 package com.inz.projekat.service;
 
-
+import com.inz.projekat.DTO.BayesDTO;
 import com.inz.projekat.DTO.ResponseDTO;
+import com.inz.projekat.model.Patient;
+import com.inz.projekat.repository.PatientRepo;
 import com.inz.projekat.utils.Utils;
-import com.ugos.jiprolog.engine.*;
-
+import com.ugos.jiprolog.engine.JIPEngine;
+import com.ugos.jiprolog.engine.JIPQuery;
+import com.ugos.jiprolog.engine.JIPTerm;
+import com.ugos.jiprolog.engine.JIPVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import unbbayes.io.BaseIO;
+import unbbayes.io.NetIO;
+import unbbayes.prs.Node;
+import unbbayes.prs.bn.JunctionTreeAlgorithm;
+import unbbayes.prs.bn.ProbabilisticNetwork;
+import unbbayes.prs.bn.ProbabilisticNode;
+import unbbayes.util.extension.bn.inference.IInferenceAlgorithm;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +33,8 @@ import java.util.List;
 public class RuleBasedService {
 
 
-
+    @Autowired
+    private PatientRepo patientRepo;
     @Autowired
     private Utils utils;
 
@@ -42,23 +56,35 @@ public class RuleBasedService {
             String[] mainSplit = res.split("\\|");
 
             String[] firstPart = mainSplit[0].split(",");
-            String[] secondPart = mainSplit[1].split(",");
 
-            dto.setCondition(firstPart[0].replace('_',' '));
+            try {
+                String[] secondPart = null;
+//            if (mainSplit[1].contains(","))
+                secondPart = mainSplit[1].split(",");
 
-            if (type == 0){
-                dto.setNum(Integer.parseInt(firstPart[1]));
-                dto.setProb(-1);
-            }else if (type == 1){
-                dto.setProb(Double.parseDouble(firstPart[1]));
-                dto.setNum(-1);
-            } else {
-                dto.setProb((Double.parseDouble(firstPart[1])));
-                dto.setNum((Integer.parseInt(firstPart[2]))); //doesn't exist if first two types
-            }
+                dto.setCondition(firstPart[0].replace('_', ' '));
 
-            for(String a: secondPart){
-                dto.getDecision().add(a.substring(1,a.length()-1).replace('_',' '));
+                if (type == 0) {
+                    dto.setNum(Integer.parseInt(firstPart[1]));
+                    dto.setProb(-1);
+                } else if (type == 1) {
+                    dto.setProb(Double.parseDouble(firstPart[1]));
+                    dto.setNum(-1);
+                } else {
+                    dto.setProb((Double.parseDouble(firstPart[1])));
+                    dto.setNum((Integer.parseInt(firstPart[2]))); //doesn't exist if first two types
+                }
+                if (secondPart != null)
+                    for (String a : secondPart) {
+                        dto.getDecision().add(a.substring(1, a.length() - 1).replace('_', ' '));
+                    }
+            }catch (Exception e){
+                dto.setCondition(firstPart[0].replace('_', ' '));
+                dto.setDecision(new ArrayList<>());
+                dto.setProbBayes(0);
+                dto.setProb(0);
+                dto.setNum(0);
+                return dto;
             }
 
         return dto;
@@ -88,6 +114,7 @@ public class RuleBasedService {
 
         return stringList;
     }
+
 
     @SuppressWarnings("Duplicates")
     public List<String> getPreventionTests(Integer age, Boolean isMale, Boolean previousIllness){
@@ -134,6 +161,114 @@ public class RuleBasedService {
 
         return  s.toString();
     }
+
+
+    public String prep(String nesto){
+        nesto = nesto.replace(" ","_");
+        nesto = nesto.replace(")", "");
+        nesto = nesto.replace("(","");
+        nesto = nesto.replace("-", "_");
+        return nesto;
+    }
+
+    private ProbabilisticNode getSpecific(List<Node> allNodes, String name){
+        for (Node n : allNodes){
+            if (n.getName().equalsIgnoreCase(name))
+                return (ProbabilisticNode) n;
+        }
+        return null;
+    }
+
+    public List<BayesDTO> calculateBayes(List<String> symptoms, List<String> allSymptoms, Long id) throws Exception{
+        BaseIO io = new NetIO();
+        ProbabilisticNetwork net = null;
+
+        List<BayesDTO> retList = new ArrayList<>();
+
+        Patient p = patientRepo.findFirstById(id);
+        if (p == null)
+            throw new Exception("No id");
+
+        List<String> repaired = new ArrayList<>();
+        for(String s : allSymptoms){
+            repaired.add(prep(s)); // fix formatting for this part of code
+        }
+
+        try{
+           net = (ProbabilisticNetwork) io.load(new File("final.net"));
+                // Sex, Age for Patient metrics
+
+            IInferenceAlgorithm algorithm = new JunctionTreeAlgorithm();
+            algorithm.setNetwork(net);
+            algorithm.run();
+
+            List<Node> nodes = net.getNodes();
+
+            for (String s : symptoms){
+//                ProbabilisticNode node = getSpecific(nodes, prep(s));
+//                node.addFinding(0);
+                ProbabilisticNode factNode = (ProbabilisticNode)net.getNode(prep(s));
+                int stateIndex = 1; // index of state "green"
+
+                for (int i = 0; i < factNode.getStatesSize(); i++){
+                    System.out.println(factNode.getStateAt(i));
+                }
+                factNode.addFinding(stateIndex);
+            }
+
+            System.out.println("Symptoms done");
+
+            for (String s : repaired){ // set rest to 0?
+                if (! symptoms.contains(s)){ // not already set to 1 (has)
+                    try {
+                        ProbabilisticNode node = (ProbabilisticNode) net.getNode(prep(s));
+                        node.addFinding(1);
+                    }catch (Exception e){
+                        System.out.println(s);
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            ProbabilisticNode node1 = (ProbabilisticNode)net.getNode("Sex");
+            ProbabilisticNode node2 = (ProbabilisticNode)net.getNode("Age");
+
+            node1.addFinding(p.getGender() == 'm' ? 0 : 1);
+            node2.addFinding(p.getAge() > 18 ? 0 : 1);
+            for (Node node : nodes){
+
+                System.out.println("ID:" + node.getName());
+
+                if (!(repaired.contains(node.getName()) || node.getName().equalsIgnoreCase("Sex") || node.getName().equalsIgnoreCase("Age"))) {
+                    System.out.println("ID:" + node.getName());
+                    System.out.println(node.getStateAt(0)+ ":" + ((ProbabilisticNode)node).getMarginalAt(0));
+                    double ne =  ((ProbabilisticNode)node).getMarginalAt(0);
+                    ne = Math.round(ne *100.0)/100.0;
+                    retList.add(new BayesDTO(node.getName(),ne));
+                }
+
+
+            }
+
+//            try {
+//                net.updateEvidences();
+//            } catch (Exception e) {
+//                System.out.println(e.getMessage());
+//            }
+//
+//            for (Node node : nodes){
+//                for (int i = 0; i < node.getStatesSize(); i++) {
+//                    System.out.println(node.getStateAt(i) + ": " + ((ProbabilisticNode)node).getMarginalAt(i));
+//                }
+//            }
+
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return retList;
+    }
+
 
 
     @SuppressWarnings("Duplicates")

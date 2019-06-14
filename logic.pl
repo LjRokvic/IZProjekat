@@ -3,9 +3,13 @@
 
 
 number_of_symptoms(L, Con, ProbOut, Num, DecList):- condition(Con, Rlist), number_of_symptoms(L, Con, Rlist, Num, Prob, DecList), Num > 0, ProbOut is  Prob / Num.
+number_of_symptoms(L, Con, ProbOut, Num, DecList):- condition(Con, Rlist), number_of_symptoms(L, Con, Rlist, Num, Prob, DecList), Num = 0, ProbOut is  0.
+
 number_of_symptoms([], Cond, List, 0, 0, []).
 number_of_symptoms([S|R], Cond, List, Num, Prob, [S|PreviousDec]):- member(S,List), number_of_symptoms(R, Cond, List, Number, PreviousProb, PreviousDec), Num is Number + 1, symptom_relation(Cond, S, OutProb), Prob is OutProb + PreviousProb. 
 number_of_symptoms([S|R], Cond, List, Num, Prob, ExDec):- \+ member(S, List), number_of_symptoms(R, Cond, List, Num, Prob,ExDec). 
+
+
 
 /* Usage: best_by_number(List_of_Symptoms, Condition, Number, DecisionList)*/
 

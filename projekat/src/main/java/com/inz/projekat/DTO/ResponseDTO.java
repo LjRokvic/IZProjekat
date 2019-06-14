@@ -12,6 +12,8 @@ public class ResponseDTO implements Serializable {
 
     private double prob;
 
+    private double probBayes;
+
     private int num;
 
     private List<String> decision = new ArrayList<>();
@@ -19,12 +21,21 @@ public class ResponseDTO implements Serializable {
     public ResponseDTO() {
     }
 
-    public ResponseDTO(String condition, int type, double prob, int num, List<String> decision) {
+    public ResponseDTO(String condition, int type, double prob, double probBayes, int num, List<String> decision) {
         this.condition = condition;
         this.type = type;
         this.prob = prob;
+        this.probBayes = probBayes;
         this.num = num;
         this.decision = decision;
+    }
+
+    public double getProbBayes() {
+        return probBayes;
+    }
+
+    public void setProbBayes(double probBayes) {
+        this.probBayes = probBayes;
     }
 
     public String getCondition() {

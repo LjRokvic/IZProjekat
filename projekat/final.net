@@ -63,11 +63,11 @@ node Insomnia
      states = ("HasInsomnia" "NoInsomnia");
 }
 
-node Abnormal_involuntary_movments
+node Abnormal_involuntary_movements
 {
      label = "C9";
      position = (80 786);
-     states = ("HasAbnormal_involuntary_movments" "NoAbnormal_involuntary_movements");
+     states = ("HasAbnormal_involuntary_movements" "NoAbnormal_involuntary_movements");
 }
 
 node Chest_tightness
@@ -210,11 +210,11 @@ node Drug_abuse
      states = ("HasDrug_abuse" "NoDrug_abuse");
 }
 
-node Obsession_and_compulsions
+node Obsessions_and_compulsions
 {
      label = "C34";
      position = (1483 435);
-     states = ("HasObsession_and_compulsions" "NoObsession_and_compulsions");
+     states = ("HasObsessions_and_compulsions" "NoObsessions_and_compulsions");
 }
 
 node Low_self_esteem
@@ -276,7 +276,7 @@ node Fears_and_phobias
 node Obsessive_compulsive_disorder_OCD
 {
      label = "C43";
-     position = (1871 234);
+     position = (1871 235);
      states = ("HasOCD" "NoOCD");
 }
 
@@ -287,11 +287,11 @@ node Feeling_ill
      states = ("HasFeeling_ill" "NoFeeling_ill");
 }
 
-node Delusion_or_hallucinations
+node Delusions_or_hallucinations
 {
      label = "C45";
      position = (2169 520);
-     states = ("HasDelusion_or_hallucinations" "NoDelusion_or_hallucinations");
+     states = ("HasDelusions_or_hallucinations" "NoDelusions_or_hallucinations");
 }
 
 node Hysterical_behavior
@@ -339,7 +339,7 @@ node Disturbance_of_memory
 node Anxiety
 {
      label = "C2";
-     position = (2842 256);
+     position = (2814 245);
      states = ("HasAnxiety" "NoAnxiety");
 }
 
@@ -362,6 +362,13 @@ node Social_phobia
      label = "C5";
      position = (3333 255);
      states = ("HasSocial_phobia" "NoSocial_phobia");
+}
+
+node Increased_heart_rate
+{
+     label = "C1";
+     position = (2768 565);
+     states = ("HasIncreased_heart_rate" "NoIncreased_heart_rate");
 }
 
 potential (Panic_disorder | Age Sex)
@@ -6682,7 +6689,7 @@ potential (Insomnia | Panic_disorder Eating_disorder Bipolar_disorder Post_traum
 ( 0.0 1.0 ))))))));
 }
 
-potential (Abnormal_involuntary_movments | Panic_disorder)
+potential (Abnormal_involuntary_movements | Panic_disorder)
 {
  data = (( 0.16 0.84 )
 ( 0.0 1.0 ));
@@ -7412,7 +7419,7 @@ potential (Drug_abuse | Schizophrenia Post_traumatic_stress_disorder_PTSD Bipola
 ( 0.0 1.0 )))));
 }
 
-potential (Obsession_and_compulsions | Obsessive_compulsive_disorder_OCD Bipolar_disorder Asperger_syndrome Attention_deficit_hyperactivity_disorder_ADHD)
+potential (Obsessions_and_compulsions | Obsessive_compulsive_disorder_OCD Bipolar_disorder Asperger_syndrome Attention_deficit_hyperactivity_disorder_ADHD)
 {
  data = ((((( 0.33 0.67 )
 ( 0.33 0.67 ))
@@ -7602,7 +7609,7 @@ potential (Feeling_ill | Obsessive_compulsive_disorder_OCD)
 ( 0.0 1.0 ));
 }
 
-potential (Delusion_or_hallucinations | Asperger_syndrome Bipolar_disorder Post_traumatic_stress_disorder_PTSD Schizophrenia Social_phobia)
+potential (Delusions_or_hallucinations | Asperger_syndrome Bipolar_disorder Post_traumatic_stress_disorder_PTSD Schizophrenia Social_phobia)
 {
  data = (((((( 0.56 0.44 )
 ( 0.56 0.44 ))
@@ -7694,17 +7701,23 @@ potential (Headache | Anxiety)
 
 potential (Schizophrenia | Sex Age)
 {
- data = ((( 1.0 0.0 )
-( 1.0 0.0 ))
-(( 1.0 0.0 )
-( 1.0 0.0 )));
+ data = ((( 0.00445 0.99555 )
+( 0.00445 0.99555 ))
+(( 0.00445 0.99555 )
+( 0.00445 0.99555 )));
 }
 
 potential (Social_phobia | Age Sex)
 {
- data = ((( 1.0 0.0 )
-( 1.0 0.0 ))
-(( 1.0 0.0 )
-( 1.0 0.0 )));
+ data = ((( 0.061 0.939 )
+( 0.08 0.92 ))
+(( 0.061 0.939 )
+( 0.08 0.92 )));
+}
+
+potential (Increased_heart_rate | Anxiety)
+{
+ data = (( 0.05 0.95 )
+( 0.0 1.0 ));
 }
 

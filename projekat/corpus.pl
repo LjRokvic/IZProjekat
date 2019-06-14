@@ -367,6 +367,40 @@ treatment_for_condition('Schizophrenia', 'Lithium_(Li)').
 treatment_for_condition('Schizophrenia', 'Perphenazine').
 treatment_for_condition('Schizophrenia', 'Paliperidone_(Invega)').
 
+condition('Social_phobia', ['Anxiety_and_nervousness','Depression','Depressive_or_psychotic_symptoms','Fears_and_phobias','Insomnia','Abusing_alcohol','Low_self-esteem','Delusions_or_hallucinations','Temper_problems','Excessive_anger','Obsessions_and_compulsions','Excessive_appetite']).
+
+symptom_relation('Social_phobia', 'Anxiety_and_nervousness', 0.82).
+symptom_relation('Social_phobia', 'Depression', 0.67).
+symptom_relation('Social_phobia', 'Depressive_or_psychotic_symptoms', 0.33).
+symptom_relation('Social_phobia', 'Fears_and_phobias', 0.28).
+symptom_relation('Social_phobia', 'Insomnia', 0.25).
+symptom_relation('Social_phobia', 'Abusing_alcohol', 0.13).
+symptom_relation('Social_phobia', 'Low_self-esteem', 0.13).
+symptom_relation('Social_phobia', 'Delusions_or_hallucinations', 0.11).
+symptom_relation('Social_phobia', 'Temper_problems', 0.08).
+symptom_relation('Social_phobia', 'Excessive_anger', 0.08).
+symptom_relation('Social_phobia', 'Obsessions_and_compulsions', 0.03).
+symptom_relation('Social_phobia', 'Excessive_appetite', 0.03).
+
+test_for_condition('Social_phobia', 'Psychotherapy').
+test_for_condition('Social_phobia', 'Mental_health_counseling').
+test_for_condition('Social_phobia', 'Depression_screen_(Depression_screening)').
+test_for_condition('Social_phobia', 'Psychological_and_psychiatric_evaluation_and_therapy').
+
+treatment_for_condition('Social_phobia', 'Clonazepam').
+treatment_for_condition('Social_phobia', 'Sertraline_(Zoloft)').
+treatment_for_condition('Social_phobia', 'Alprazolam_(Xanax)').
+treatment_for_condition('Social_phobia', 'Bupropion_(Wellbutrin)').
+treatment_for_condition('Social_phobia', 'Quetiapine_(Seroquel)').
+treatment_for_condition('Social_phobia', 'Citalopram_(Celexa)').
+treatment_for_condition('Social_phobia', 'Paroxetine_(Paxil)').
+treatment_for_condition('Social_phobia', 'Fluoxetine_(Prozac)').
+treatment_for_condition('Social_phobia', 'Duloxetine_(Cymbalta)').
+treatment_for_condition('Social_phobia', 'Lamotrigine_(Lamictal)').
+treatment_for_condition('Social_phobia', 'Venlafaxine_(Effexor)').
+treatment_for_condition('Social_phobia', 'Aripiprazole_(Abilify)').
+treatment_for_condition('Social_phobia', 'Mirtazapine').
+
 symptom('Abnormal_involuntary_movements').
 symptom('Abusing_alcohol').
 symptom('Acne_or_pimples').
@@ -407,89 +441,91 @@ symptom('Temper_problems').
 symptom('Vomiting_blood').
 symptom('Weight_gain').
 
-test('Varicose_vein_stripping;_lower_limb').
-test('Arterio-_or_venogram_(not_heart_and_head)').
-test('Cardiac_monitoring_(Cardiac_monitor)').
-test('Other_OR_therapeutic_procedures_on_nose;_mouth_and_pharynx').
-test('Electroencephalogram_(EEG)_(Eeg)').
-test('Psychological_and_psychiatric_evaluation_and_therapy').
-test('Liver_function_tests_(Liver_test)').
-test('Blood_culture').
-test('Occupational_therapy_assessment_(Speech_therapy)').
-test('Mental_health_counseling').
-test('Lipid_panel').
 test('Other_diagnostic_radiology_and_related_techniques').
+test('Arterio-_or_venogram_(not_heart_and_head)').
+test('Other_OR_therapeutic_procedures_on_nose;_mouth_and_pharynx').
+test('Electrocardiogram').
+test('Blood_culture').
+test('Psychological_and_psychiatric_evaluation_and_therapy').
+test('Occupational_therapy_assessment_(Speech_therapy)').
+test('Blood_alcohol').
 test('Toxicology_screen').
+test('Electroencephalogram_(EEG)_(Eeg)').
+test('Cardiac_monitoring_(Cardiac_monitor)').
+test('Psychotherapy').
+test('Depression_screen_(Depression_screening)').
+test('Liver_function_tests_(Liver_test)').
 test('Cerebral_arteriogram_(Angiography_cerebral)').
 test('Diagnostic_spinal_tap_(Spinal_tap)').
-test('Blood_alcohol').
-test('Arterial_blood_gases_(ABGs)').
+test('Mental_health_counseling').
 test('Prothrombin_time_assay_(Prothrombin_time)').
-test('Depression_screen_(Depression_screening)').
-test('Psychotherapy').
-test('Electrocardiogram').
+test('Lipid_panel').
+test('Arterial_blood_gases_(ABGs)').
+test('Varicose_vein_stripping;_lower_limb').
 
-treatment('Benzoyl_Peroxide_Topical').
-treatment('Ziprasidone_(Geodon)').
-treatment('Risperidone').
-treatment('Lorazepam').
-treatment('Minocycline').
-treatment('Guanfacine_(Intuniv)').
-treatment('Lamotrigine_(Lamictal)').
-treatment('Phenelzine_(Nardil)').
-treatment('Haloperidol').
-treatment('Desvenlafaxine_(Pristiq)').
-treatment('Escitalopram_(Lexapro)').
-treatment('Disulfiram_(Antabuse)').
-treatment('Atomoxetine_(Strattera)').
-treatment('Dexmethylphenidate_(Focalin)').
-treatment('Tranylcypromine_(Parnate)').
-treatment('Aripiprazole_(Abilify)').
-treatment('Methylphenidate').
-treatment('Imipramine').
-treatment('Topiramate_(Topamax)').
-treatment('Melatonin').
-treatment('Quetiapine_(Seroquel)').
-treatment('Chlorpromazine_(Thorazine)').
-treatment('L-Methylfolate').
-treatment('Oxazepam').
-treatment('Citalopram_(Celexa)').
-treatment('Clorazepate').
-treatment('Adderall').
-treatment('Oxcarbazepine_(Trileptal)').
-treatment('Eszopiclone_(Lunesta)').
-treatment('Olanzapine_(Zyprexa)').
-treatment('Paliperidone_(Invega)').
-treatment('Fluphenazine_(Prolixin)').
-treatment('Clozapine').
-treatment('Clonazepam').
-treatment('Cyproheptadine').
-treatment('Bupropion_(Wellbutrin)').
-treatment('Darunavir_(Prezista)').
-treatment('Flurazepam').
-treatment('Perphenazine').
-treatment('Buspirone_(Buspar)').
-treatment('Loxapine').
-treatment('Lopinavir').
-treatment('Lithium_(Li)').
-treatment('Amantadine').
-treatment('Fluvoxamine_(Luvox)').
-treatment('Sertraline_(Zoloft)').
 treatment('Doxepin').
-treatment('Lisdexamfetamine_(Vyvanse)').
-treatment('Meprobamate_(Miltown)').
+treatment('Buspirone_(Buspar)').
+treatment('Clorazepate').
 treatment('Alprazolam_(Xanax)').
+treatment('Amantadine').
 treatment('Acamprosate_(Campral)').
-treatment('Clomipramine').
-treatment('Benztropine').
-treatment('Fluoxetine_(Prozac)').
-treatment('Dextroamphetamine_(Adderall)').
-treatment('Paroxetine_(Paxil)').
-treatment('Divalproex_Sodium_(Depakote)').
-treatment('Mirtazapine').
-treatment('Trazodone').
-treatment('Venlafaxine_(Effexor)').
+treatment('Escitalopram_(Lexapro)').
+treatment('Topiramate_(Topamax)').
+treatment('Olanzapine_(Zyprexa)').
+treatment('Perphenazine').
+treatment('Desvenlafaxine_(Pristiq)').
+treatment('Guanfacine_(Intuniv)').
+treatment('Imipramine').
+treatment('Lorazepam').
+treatment('Clonazepam').
+treatment('Adderall').
+treatment('Oxazepam').
+treatment('Oxcarbazepine_(Trileptal)').
+treatment('Atomoxetine_(Strattera)').
 treatment('Clonidine').
+treatment('Fluphenazine_(Prolixin)').
+treatment('Eszopiclone_(Lunesta)').
+treatment('Tranylcypromine_(Parnate)').
+treatment('Venlafaxine_(Effexor)').
+treatment('Minocycline').
+treatment('Divalproex_Sodium_(Depakote)').
+treatment('Risperidone').
+treatment('Quetiapine_(Seroquel)').
+treatment('Dextroamphetamine_(Adderall)').
+treatment('Cyproheptadine').
+treatment('Clomipramine').
+treatment('Flurazepam').
+treatment('Fluoxetine_(Prozac)').
+treatment('Chlorpromazine_(Thorazine)').
+treatment('Darunavir_(Prezista)').
+treatment('Lisdexamfetamine_(Vyvanse)').
+treatment('Mirtazapine').
+treatment('Dexmethylphenidate_(Focalin)').
+treatment('Paliperidone_(Invega)').
+treatment('Duloxetine_(Cymbalta)').
+treatment('Disulfiram_(Antabuse)').
+treatment('Methylphenidate').
+treatment('Phenelzine_(Nardil)').
+treatment('L-Methylfolate').
+treatment('Melatonin').
+treatment('Lithium_(Li)').
+treatment('Trazodone').
+treatment('Meprobamate_(Miltown)').
+treatment('Clozapine').
+treatment('Bupropion_(Wellbutrin)').
+treatment('Benzoyl_Peroxide_Topical').
+treatment('Paroxetine_(Paxil)').
+treatment('Sertraline_(Zoloft)').
+treatment('Loxapine').
+treatment('Citalopram_(Celexa)').
+treatment('Benztropine').
+treatment('Haloperidol').
+treatment('Fluvoxamine_(Luvox)').
+treatment('Ziprasidone_(Geodon)').
+treatment('Lopinavir').
+treatment('Aripiprazole_(Abilify)').
+treatment('Lamotrigine_(Lamictal)').
+
 
 
 /* Usage: number_of_symptoms(List_of_symptoms, Condition, Number, Probability).
@@ -497,9 +533,13 @@ treatment('Clonidine').
 
 
 number_of_symptoms(L, Con, ProbOut, Num, DecList):- condition(Con, Rlist), number_of_symptoms(L, Con, Rlist, Num, Prob, DecList), Num > 0, ProbOut is  Prob / Num.
+number_of_symptoms(L, Con, ProbOut, Num, DecList):- condition(Con, Rlist), number_of_symptoms(L, Con, Rlist, Num, Prob, DecList), Num = 0, ProbOut is  0.
+
 number_of_symptoms([], Cond, List, 0, 0, []).
 number_of_symptoms([S|R], Cond, List, Num, Prob, [S|PreviousDec]):- member(S,List), number_of_symptoms(R, Cond, List, Number, PreviousProb, PreviousDec), Num is Number + 1, symptom_relation(Cond, S, OutProb), Prob is OutProb + PreviousProb. 
 number_of_symptoms([S|R], Cond, List, Num, Prob, ExDec):- \+ member(S, List), number_of_symptoms(R, Cond, List, Num, Prob,ExDec). 
+
+
 
 /* Usage: best_by_number(List_of_Symptoms, Condition, Number, DecisionList)*/
 
@@ -512,7 +552,6 @@ forall(number_of_symptoms(LS,_,NumC1,_,_), NumC >= NumC1), !.
 best_by_percentage(LS, Con, Perc, DecList):- number_of_symptoms(LS,Con,Perc,_, DecList),
 forall(number_of_symptoms(LS,_,Perc1,_,_), Perc>= Perc1), !.
 
-
 /* Usage: diagnose_number(List_of_Conditions, List_of_Symptoms, Condition, Number,DecisionList)*/
 
 diagnose_number([],LS,Con, Num, DecList):- best_by_number(LS, Con, Num, DecList).
@@ -521,7 +560,7 @@ diagnose_number([LLC|LC],LS, Con, Num, DecList):- \+ condition(LLC, [A,B,C|Rest]
 
 /* Usage: diagnose_perc(List_of_Conditions, List_of_Symptoms, Condition, Percetage, DecisionList)*/
 
-diagnose_perc([],LSS,Con,Per, DecList):- best_by_percentage(LSS,Con, Per, DecList).
+diagnose_perc([],LS,Con,Per, DecList):- best_by_percentage(LS,Con, Per, DecList).
 diagnose_perc([LLC|LC],LSS, Con, Per, DecList):- condition(LLC, [A,B,C|R]), diagnose_perc(LC,[A,B,C|LSS], Con, Per, DecList).  
 diagnose_perc([LLC|LC],LSS, Con, Per, DecList):- \+ condition(LLC, [A,B,C|R]), diagnose_perc(LC,LSS, Con, Per, DecList).  
 
@@ -529,12 +568,3 @@ diagnose_perc([LLC|LC],LSS, Con, Per, DecList):- \+ condition(LLC, [A,B,C|R]), d
 /* Example
 diagnose_perc(['Panic_disorder'], ['Temper_problems','Drug_abuse'], Con, Perc, DecList).
 */
-
-/* Age of patient, sex of patient (true - male), PC - true if any previous, Rec recommended test
-preventive(Age,Sex,PreviousConditions,Rec) */
-
-preventive(Age,Sex,true,'Mental health counseling'):- Age > 18.
-preventive(Age,false,PC, 'Toxicology screen'):- Age >18. 
-preventive(Age,false,PC, 'Depression screen (Depression screening)'):- Age >18.
-preventive(Age,Sex, true, 'Psychotherapy'):- Age < 18.
-preventive(Age,Sex, PC, 'Psychological and psychiatric evaluation and therapy'):- Age < 18.
