@@ -12,7 +12,9 @@ Before running:
    - commons-logging-1.0.4.jar
    - jpf-1.5.jar
    - unbbayes-4.22.18.jar
+   
   Tested on Windows 10 PRO 1803, with Java 1.8.0_201 (JDK)
+  
 How to run:
   Open "project" under Intellj IDEA or Eclipse (tested on both) and run the "ProjekatApplication"
 Open browser on:
