@@ -19,6 +19,6 @@ Open browser on:
   http://localhost:8080/profile.html
 
 Team members:
-  Aleksandar Cvejić
+  Aleksandar Cvejić,
   Ljubomir Rokvić
 
