@@ -1,7 +1,11 @@
 Project for university course "Engineering knowledge" (srb. Inžinjering znanja)
 
-Demonstration of use of case based reasoning as well as rule based reasoning.
+
+
+Demonstration of use of case based reasoning as well as rule based reasoning for diagnosing patient conditions in the field of Psychiatry.
+
 Case based implemented with jCOLIBRI (for both preventive and conditions seperatly)
+
 Rule based implemented with both JIProlog and unBayes
 
 Before running:
@@ -22,4 +26,8 @@ Open browser on:
 Team members:
   Aleksandar Cvejić,
   Ljubomir Rokvić
+  
+Statistics for the project are gatherd from:
+  - https://www.nimh.nih.gov/health/statistics/index.shtml
+  - http://www.symcat.com/
 
