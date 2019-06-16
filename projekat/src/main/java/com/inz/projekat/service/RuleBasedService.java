@@ -179,7 +179,7 @@ public class RuleBasedService {
         return null;
     }
 
-    public List<BayesDTO> calculateBayes(List<String> symptoms, List<String> allSymptoms, Long id) throws Exception{
+    public List<BayesDTO> calculateBayes(List<String> symptoms, List<String> negativeSymptoms, List<String> allConditions, Long id) throws Exception{
         BaseIO io = new NetIO();
         ProbabilisticNetwork net = null;
 
@@ -190,9 +190,22 @@ public class RuleBasedService {
             throw new Exception("No id");
 
         List<String> repaired = new ArrayList<>();
-        for(String s : allSymptoms){
-            repaired.add(prep(s)); // fix formatting for this part of code
+        if (!negativeSymptoms.isEmpty()){
+            for(String s : negativeSymptoms){
+                if (!symptoms.contains(s)) // Can't be in both lists
+                    repaired.add(prep(s)); // fix formatting for this part of code
+            }
         }
+
+        List<String> normalizedConditions = new ArrayList<>();
+        for (String s : allConditions){
+            normalizedConditions.add(prep(s));
+        }
+
+//        List<String> normalizedSymptoms = new ArrayList<>(); // if need be
+//        for (String s : symptoms){
+//            normalizedSymptoms.add(prep(s));
+//        }
 
         try{
            net = (ProbabilisticNetwork) io.load(new File("final.net"));
@@ -217,29 +230,42 @@ public class RuleBasedService {
             }
 
             System.out.println("Symptoms done");
-
-            for (String s : repaired){ // set rest to 0?
-                if (! symptoms.contains(s)){ // not already set to 1 (has)
-                    try {
-                        ProbabilisticNode node = (ProbabilisticNode) net.getNode(prep(s));
-                        node.addFinding(1);
-                    }catch (Exception e){
-                        System.out.println(s);
-                        e.printStackTrace();
-                    }
-                }
+            if (!repaired.isEmpty())
+            for (String s : repaired){ // Set negative symptoms to false
+                        try {
+                            ProbabilisticNode node = (ProbabilisticNode) net.getNode(s);
+                            node.addFinding(1);
+                        }catch (Exception e){
+                            System.out.println(s);
+                            e.printStackTrace();
+                        }
             }
+            System.out.println("Negative symptoms done");
 
             ProbabilisticNode node1 = (ProbabilisticNode)net.getNode("Sex");
             ProbabilisticNode node2 = (ProbabilisticNode)net.getNode("Age");
 
             node1.addFinding(p.getGender() == 'm' ? 0 : 1);
             node2.addFinding(p.getAge() > 18 ? 0 : 1);
+
+
+            try {
+                net.updateEvidences();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+
             for (Node node : nodes){
 
                 System.out.println("ID:" + node.getName());
 
-                if (!(repaired.contains(node.getName()) || node.getName().equalsIgnoreCase("Sex") || node.getName().equalsIgnoreCase("Age"))) {
+                //Boolean alreadySeenSymptom = symptoms.contains(node.getName());
+                Boolean isACondition = normalizedConditions.contains(node.getName());
+                //Boolean isSex = node.getName().equalsIgnoreCase("Sex");
+                //Boolean isAge = node.getName().equalsIgnoreCase("Age");
+                //if (!( alreadySeenSymptom || isACondition || isSex || isAge)) {
+                if (isACondition){
                     System.out.println("ID:" + node.getName());
                     System.out.println(node.getStateAt(0)+ ":" + ((ProbabilisticNode)node).getMarginalAt(0));
                     double ne =  ((ProbabilisticNode)node).getMarginalAt(0);
@@ -250,11 +276,6 @@ public class RuleBasedService {
 
             }
 
-//            try {
-//                net.updateEvidences();
-//            } catch (Exception e) {
-//                System.out.println(e.getMessage());
-//            }
 //
 //            for (Node node : nodes){
 //                for (int i = 0; i < node.getStatesSize(); i++) {

@@ -568,3 +568,12 @@ diagnose_perc([LLC|LC],LSS, Con, Per, DecList):- \+ condition(LLC, [A,B,C|R]), d
 /* Example
 diagnose_perc(['Panic_disorder'], ['Temper_problems','Drug_abuse'], Con, Perc, DecList).
 */
+
+/* Age of patient, sex of patient (true - male), PC - true if any previous, Rec recommended test
+preventive(Age,Sex,PreviousConditions,Rec) */
+
+preventive(Age,Sex,true,'Mental health counseling'):- Age > 18.
+preventive(Age,false,PC, 'Toxicology screen'):- Age >18.
+preventive(Age,false,PC, 'Depression screen (Depression screening)'):- Age >18.
+preventive(Age,Sex, true, 'Psychotherapy'):- Age < 18.
+preventive(Age,Sex, PC, 'Psychological and psychiatric evaluation and therapy'):- Age < 18.

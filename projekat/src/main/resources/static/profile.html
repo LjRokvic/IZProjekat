@@ -234,10 +234,14 @@
                     <br>
                     <br>
                     <select id="symptoms_select_rule" multiple="multiple">
-                        <optgroup id="symptoms_grp_rule" label="Symptoms: ">
+                        <optgroup id="symptoms_grp_rule" label="Has Symptoms: ">
                         </optgroup>
                     </select>
-
+                    <br>
+                    <select id="symptoms_select_rule_negative" multiple="multiple">
+                        <optgroup id="symptoms_grp_rule_negative" label="Doesn't have Symptoms: ">
+                        </optgroup>
+                    </select>
                     <button id="evaluate_btn_rule" type="button" class="btn btn-success" style ="margin-bottom: 30px; margin-left: 15px">Evaluate</button>
 
 
@@ -253,7 +257,7 @@
                         <tr>
                             <th>Percentage Bayes (%): </th>
                             <th>Condition:</th>
-                            <th>Percentage (%): </th>
+                            <th>Symptoms match perc.(%): </th>
                             <th>Symptoms match (X/12): </th>
                             <th>Tests: </th>
                             <th>Treatments: </th>
@@ -264,6 +268,7 @@
                         </tbody>
                     </table>
                     <!--<button id="evaluate_btn_rule_history" type="button" class="btn btn-success" style ="margin-bottom: 30px; margin-left: 15px">Evaluate with History</button>-->
+                    <b style="font-size: 12px">**Extra explanation: Based on Population statistics and sex/age, as well as absence of symptoms provided</b>
                     <div id="hiddenList">
                     <br>
                     <br>

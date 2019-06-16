@@ -3,6 +3,7 @@ package com.inz.projekat.controller;
 
 import com.inz.projekat.DTO.BayesDTO;
 import com.inz.projekat.DTO.DataDTO;
+import com.inz.projekat.DTO.InfoDTO;
 import com.inz.projekat.DTO.ResponseDTO;
 import com.inz.projekat.service.GeneralService;
 import com.inz.projekat.service.RuleBasedService;
@@ -54,11 +55,13 @@ public class RuleBasedController {
     }
 
     @RequestMapping(value = "/all/{id}", method = RequestMethod.POST ,consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public List<ResponseDTO> getAll(@RequestBody List<String> symptoms, @PathVariable("id") Long patientId){
+    //public List<ResponseDTO> getAll(@RequestBody List<String> symptoms, @RequestBody List<String> symptoms_negative, @PathVariable("id") Long patientId){
+    public List<ResponseDTO> getAll(@RequestBody InfoDTO sym, @PathVariable("id") Long patientId){
+        List<ResponseDTO> results =  ruleBasedService.getAll(sym.getSymptoms());
 
-        List<ResponseDTO> results =  ruleBasedService.getAll(symptoms);
+
         try{
-            List<BayesDTO> retList =  ruleBasedService.calculateBayes(symptoms, generalService.getAllSymptoms(), patientId);
+            List<BayesDTO> retList =  ruleBasedService.calculateBayes(sym.getSymptoms(), sym.getNegativeSymptoms(), generalService.getAllConditions(), patientId);
             int ind;
             for (ResponseDTO d : results){
                 ind = -1;

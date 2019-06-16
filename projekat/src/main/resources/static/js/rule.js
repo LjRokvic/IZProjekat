@@ -41,11 +41,14 @@ $(function () {
         event.preventDefault();
 
         var syms = $('select#symptoms_select_rule').val();
-
+        var syms_negative = $('select#symptoms_select_rule_negative').val();
         $.ajax({
             url: "/api/all/"+id ,
             type: 'POST',
-            data: JSON.stringify(syms),
+            data: JSON.stringify({
+                symptoms: syms,
+                negativeSymptoms: syms_negative
+            }),
             contentType: 'application/json',
             success: function (data) {
                 var table;
@@ -221,7 +224,7 @@ function fillResultsRule(table, data) {
     if (data.decision.length !== 0){
         decList = $('<td>' + data.decision + '</td>');
     }else{
-        decList = $('<td>' + 'Population statistics based on age and sex' + '</td>');
+        decList = $('<td>' + 'See extra explanation**' + '</td>');
     }
 
 

@@ -172,6 +172,7 @@ $(function() {
                 else {
                     $('#symptoms_select').fSelect();
                     $('#symptoms_select_rule').fSelect();
+                    $('#symptoms_select_rule_negative').fSelect();
                 }
             }
         });
@@ -267,8 +268,10 @@ $(function() {
 	function addSymptoms(data) {
 	    var sym = $('<option value="' + data + '">' + data + '</option>');
         var sym1 = $('<option value="' + data + '">' + data + '</option>');
+        var sym2 = $('<option value="' + data + '">' + data + '</option>');
         $('#symptoms_grp').append(sym);
         $('#symptoms_grp_rule').append(sym1);
+        $('#symptoms_grp_rule_negative').append(sym2);
 	}
 	function addTests(data) {
 	    var tes = $('<option value="' + data + '">' + data + '</option>');
